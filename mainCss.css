@@ -1,0 +1,62 @@
+
+.Container{
+    display: grid;
+    grid-template-areas: 
+    'header'
+    'main';
+    align-content: center;
+}
+
+.header{
+    background-color: #ffd67e;
+    grid-area: header;
+    height:fit-content;
+}
+
+#StartMain{
+    background-image: url('cookies.png');
+    display: grid;
+    height: max-content;
+    grid-template-areas: 
+    'first first first first first'
+    'second bt1 second b2 second'
+    'edit input1 input2 input3 text';
+}
+#Title{
+    grid-area: first;
+}
+#editBtn{
+    grid-area: edit;
+}
+#DelBtn{
+    grid-area: bt2;
+}
+
+#SPBtn{
+    grid-area: bt1;
+}
+
+#input1 {
+    grid-area: input1;
+}
+#input2{
+    grid-area: input2;
+}
+#input3{
+    grid-area: input3;
+
+}
+
+
+.main{
+    background-color: #ffe1a6;
+    height:max-content;
+    grid-area: main;
+}
+
+.textBox {
+    background-color: #ffc450;
+    align-self: center;
+    width:  75%;
+}
+
