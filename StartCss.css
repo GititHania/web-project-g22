@@ -1,0 +1,46 @@
+
+
+#StartMain{
+    background-image: url('cookies.png');
+    display: grid;
+    height: 100 vh;
+    grid-template-columns: repeat(5, [col] auto ) ;
+    grid-template-rows: repeat(3, [row] auto  );
+    row-gap: 5vh;
+    column-gap: 1%;
+}
+
+#Title{
+    grid-column: col 3/ span 1;
+    grid-row: row 1;
+}
+#editBtn{
+    grid-column: col 1/ span 1;
+    grid-row: row 3;
+}
+#DelBtn{
+    grid-column: col 4/ span 2;
+    grid-row: row 2;
+
+}
+
+#SPBtn{
+    grid-column: col 2/ span 1;
+    grid-row: row 2;
+}
+
+#input1 {
+    grid-column: col 2/ span 1;
+    grid-row: row 3;
+
+}
+#input2 {
+    grid-column: col 3/ span 1;
+    grid-row: row 3;
+
+}
+#input3 {
+    grid-column: col 4/ span 1;
+    grid-row: row 3;
+}
+

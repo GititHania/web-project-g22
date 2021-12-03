@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/3a10c9cc85.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="mainCss.css">
+    <link rel="stylesheet" href="StartCss.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -11,12 +13,24 @@
 
 <body>
     <div class="Container">
-        <div  class="header">MAMA Cookies</div>
+        <div  class="header">
+            MAMA Cookies
+            <i class="fas fa-cookie" onclick="change_location('main.html')"></i>
+            <i class="fas fa-phone" onclick="change_location('ContactUs.html')"></i>
+            <i class="fas fa-shopping-cart"  onclick="change_location('Cart.html')"></i>
+            <i class="fas fa-bars"></i>
+        </div>
         <div id="StartMain" class="main">
             <h1 id="Title">MAMA Cookies</h1>
-            <button id="SPBtn">  איסוף עצמי  </button>
-            <button id="DelBtn"> משלוח </button>
-            <button id="editBtn"> EDIT </button>
+            <span id="SPBtn">
+                <button >  איסוף עצמי  </button>
+            </span>
+            <span id="DelBtn">
+                <button >   משלוח  </button>
+            </span>
+            <span id="editBtn">
+                <button  class="fas fa-pen">  </button>
+            </span>
             <div id="input1">
                 <label for="">בית</label>
                 <input type="text">
@@ -25,7 +39,7 @@
                 <label for="">רחוב</label>
                 <input type="text">
             </div>
-            <div id="input2">
+            <div id="input3">
                 <label for="">עיר</label>
                 <input type="text">
             </div>
