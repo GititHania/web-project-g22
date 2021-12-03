@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/3a10c9cc85.js" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
     <link rel="stylesheet" href="mainCss.css">
     <link rel="stylesheet" href="StartCss.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,10 +13,11 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="find_location()">
     <div class="Container">
         <div  class="header">
-            MAMA Cookies
+            <span class="MCH">MAMA  Cookies</span>
+            
             <i class="fas fa-cookie" onclick="change_location('main.html')"></i>
             <i class="fas fa-phone" onclick="change_location('ContactUs.html')"></i>
             <i class="fas fa-shopping-cart"  onclick="change_location('Cart.html')"></i>

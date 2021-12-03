@@ -5,6 +5,9 @@
     --TxBx-color: #ffc450;
 }
 
+h1{
+    background-color: var(--BG-color);
+}
 
 body{
     min-height: 100%;
@@ -15,6 +18,16 @@ body{
     font-size: x-large;
 }
 
+
+label {
+    position: absolute;
+    right: 5vw;
+}
+
+input {
+    position: absolute;
+    left: 10vw;
+}
 
 button{
     background-color: var(--Btb-color);
@@ -56,5 +69,20 @@ button{
     padding: 2%;
     font-weight: bolder;
     text-align: right;
+    border-radius: 15%;
 }
 
+#MC {
+    font-size: xx-large;
+}
+
+.MSH {
+    position: absolute;
+    right:99vw;
+    text-align: left;
+    text-align: left;
+}
+
+.English {
+    font-size: large;
+}

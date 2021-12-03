@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/3a10c9cc85.js" crossorigin="anonymous"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContactUs</title>
+    <title>Payment</title>
 </head>
 
 <body>
@@ -21,24 +21,27 @@
             <i class="fas fa-bars"></i>
         </div>
         <div class="main">
-            <h1>צור קשר </h1>
+            <h1>תשלום </h1>
             <div class="textBox">
                 <form action="">
                     <!-- TODO -alien to the right -->
-                    <input type="text" name="NameC" id="NameC" />
-                    <label for="NameC"> שם מלא </label> <br />
-                    
-                    <input type="text" name="EmailC" id="EmailC" /> 
-                    <label for="EmailC"> כתובת דוא"ל </label><br />
-                    <input type="text" name="PhoneC" id="PhoneC" />
-                    <label for="PhoneC"> טלפון </label> <br /> <br />
+                    <input type="text" name="NameP" id="NameP" /> 
+                    <label for="NameP"> שם בעל הכרטיס </label> <br />
 
-                    <input type="text" name="TopicC" id="TopicC" /> 
-                    <label for="TopicC"> נושא פנייה </label><br />
+                    <input type="text" name="IDP" id="IDP" /> 
+                    <label for="IDP"> ת"ז בעל הכרטיס </label> <br />
 
-                    <label for="Input"> טקסט חופשי </label><br />
-                    <textarea name="Input" id="Input" cols="40" rows="12"
-                        placeholder="...זה המקום לשתף, אנחנו מקשיבים"></textarea><br />
+                    <input type="text" name="CardP" id="CardP" />
+                    <label for="CardP"> מספר כרטיס אשראי </label> <br /> <br />
+
+                    <input type="text" maxlength=2 size="2" name="MonthEx" id="MonthEx" /> 
+                    <span>/</span>
+                    <input type="text" maxlength=4 size="2" name="YearEx" id="YearEx" /> 
+                    <label for="TopicC"> תוקף כרטיס </label><br />
+
+                    <input type="text" maxlength=3 size="2" name="ccvP" id="ccvP" /> 
+                    <label for="ccvP" class="English"> CCV </label><br />
+
                     <button id="subbtn">Submit</button>
                 </form>
 
