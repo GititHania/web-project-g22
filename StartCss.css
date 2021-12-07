@@ -1,7 +1,9 @@
+body{
+    background-image: url('cookies.png');
 
+}
 
 #StartMain{
-    background-image: url('cookies.png');
     display: grid;
     height: 100 vh;
     grid-template-columns: repeat(5, [col] auto ) ;
@@ -43,4 +45,10 @@
     grid-column: col 4/ span 1;
     grid-row: row 3;
 }
-
+/* @media only screen and (max-width: 900px){
+    .textBox{
+        width: 85vw;
+        left: 7vw;
+        right: 8vw;
+    }
+} */

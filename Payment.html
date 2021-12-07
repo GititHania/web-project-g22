@@ -24,24 +24,51 @@
             <h1>תשלום </h1>
             <div class="textBox">
                 <form action="">
-                    <!-- TODO -alien to the right -->
-                    <input type="text" name="NameP" id="NameP" /> 
-                    <label for="NameP"> שם בעל הכרטיס </label> <br />
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="NameP"> שם בעל הכרטיס </label>
+                            </td>
+                            <td>
+                                <input type="text" name="NameP" id="NameP" /> <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="IDP"> ת"ז בעל הכרטיס </label> <br />
+                            </td>
+                            <td>
+                                <input type="text" name="IDP" id="IDP" />
 
-                    <input type="text" name="IDP" id="IDP" /> 
-                    <label for="IDP"> ת"ז בעל הכרטיס </label> <br />
-
-                    <input type="text" name="CardP" id="CardP" />
-                    <label for="CardP"> מספר כרטיס אשראי </label> <br /> <br />
-
-                    <input type="text" maxlength=2 size="2" name="MonthEx" id="MonthEx" /> 
-                    <span>/</span>
-                    <input type="text" maxlength=4 size="2" name="YearEx" id="YearEx" /> 
-                    <label for="TopicC"> תוקף כרטיס </label><br />
-
-                    <input type="text" maxlength=3 size="2" name="ccvP" id="ccvP" /> 
-                    <label for="ccvP" class="English"> CCV </label><br />
-
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="CardP"> מספר כרטיס אשראי </label> <br />
+                            </td>
+                            <td>
+                                <input type="text" name="CardP" id="CardP" /> <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="TopicC"> תוקף כרטיס </label><br />
+                            </td>
+                            <td>
+                                <input type="text" maxlength=2 size="2" name="MonthEx" id="MonthEx" />
+                                <span>/</span>
+                                <input type="text" maxlength=4 size="2" name="YearEx" id="YearEx" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="ccvP" class="English"> CCV </label><br />
+                            </td>
+                            <td>
+                                <input type="text" maxlength=3 size="2" name="ccvP" id="ccvP" />
+                            </td>
+                        </tr>
+                    </table>
                     <button id="subbtn">Submit</button>
                 </form>
 
