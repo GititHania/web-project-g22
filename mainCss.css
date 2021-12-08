@@ -5,12 +5,6 @@
     --TxBx-color: #ffc450;
 }
 
-h1 {
-    background-color: var(--BG-color);
-    align-self      : center;
-}
-
-
 body {
     min-height      : 100%;
     box-sizing      : border-box;
@@ -20,30 +14,34 @@ body {
     font-size       : x-large;
     direction       : rtl;
 
-    overflow-y: scroll;
-    overflow-x: hidden;
 }
 
 button {
     background-color: var(--Btb-color);
     border-radius   : 50%;
-    height          : fit-content;
+    height          : 5vh;
+    min-height      : fit-content;
+    width           : 5vw;
+    min-width       : fit-content;
 }
 
+p, ol, li {
+    margin: 1%;
+}
+ol {
+    margin-bottom: 2%;
+    font-size: medium;
+}
 
 .Container {
-    display: grid;
-    grid-template-areas:
-        'header'
-        'main';
-    position       : top;
-    text-align-last: center;
-
+    display            : grid;
+    grid-template-areas: 'header''main';
+    position           : top;
+    text-align-last    : center;
 }
 
-
-header {
-    position        : sticky;
+.header {
+    position        : static;
     background-color: var(--Head-color);
     grid-area       : header;
     width           : 100vw;
@@ -106,6 +104,7 @@ table {
 
 }
 
+
 /* Style the buttons that are used to open and close the faq-question body */
 .faq-question {
     color        : rgb(0, 0, 0);
@@ -150,16 +149,17 @@ table {
 }
 
 #mainTl {
-    position: fixed;
-    left    : 25vw;
+    position: absolute;
+    left    : 35vw;
+    margin-bottom: 2vh;
+    top: 0;
 }
 
 .cards_container {
-    position             : fixed;
+    position             : absolute;
     right                : 28vw;
     width                : 70vw;
     top                  : 20vh;
-    margin-top           : 5vh;
     bottom               : 0;
     z-index              : 1;
     display              : grid;
@@ -186,21 +186,64 @@ img {
     max-width    : 75%;
     border-radius: 25%;
     object-fit   : contain;
+    align-self   : center;
 }
 
 .side_nav {
-    position           : sticky;
-    background-color   : var(--Head-color);
-    width              : 25vw;
-    /* position        : fixed; */
-    right              : 0;
-    top                : 0;
-    bottom             : 0;
-    z-index            : 1;
-    height             : 100%;
-    bottom             : 0;
+    position        : fixed;
+    background-color: var(--Head-color);
+    padding-right   : 2vw;
+    width           : 20vw;
+    right           : 0;
+    top             : 0;
+    bottom          : 0;
+    z-index         : 1;
+    height          : 100%;
+    bottom          : 0;
 
 }
+
+.popup {
+    border          : 2px solid chocolate;
+    background-color: var(--TxBx-color);
+    position        : absolute;
+    top             : 10vh;
+    right           : 40vw;
+    width           : max-content;
+    padding         : 2%;
+    z-index         : 10;
+    display         : none;
+    text-align      : justify;
+    align-items     : justify;
+    border-radius   : 25%;
+    align-content   : center;
+    text-align-last : center;
+
+}
+
+.popup input {
+    align-self: left;
+}
+
+.popup label {
+    align-self: right;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+#page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position  : fixed;
+    top       : 0;
+    right     : 0;
+    bottom    : 0;
+    left      : 0;
+    display   : none;
+    z-index   : 9;
+}
+
 
 @media only screen and (max-width: 1000px) {
     body {

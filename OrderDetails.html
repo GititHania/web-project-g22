@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="mainCss.css">
+    <script src="main.js"></script>
+    <script src="https://kit.fontawesome.com/3a10c9cc85.js" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+</head>
+<body onload="get_summery()">
+    <div class="Container">
+        <div  class="header">
+            MAMA Cookies
+            <i class="fas fa-cookie" onclick="change_location('main.html')"></i>
+            <i class="fas fa-phone" onclick="change_location('ContactUs.html')"></i>
+            <i class="fas fa-shopping-cart"  onclick="change_location('Cart.html')"></i>
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="main">
+            <h1 class="page_title">סיכום הזמנה</h1>
+            <div class="textBox" class="Summary">
+                <div>
+                    <label class="title">להלן פרטי הזמנתך</label>
+                </div>
+                <br>
+                <div>
+                    <label class="underline"> הזמנתך תצא מסניף</label><br>
+                    <input id="StoreName" readonly ><br>
+                    <input id="StorePhone" readonly>
+
+                </div> 
+                <div>
+                    <label class="underline">מוצרים נבחרים</label>
+                    <ol>
+                        <li>עוגיות שוקולד מריר עם קינדר X2 (20 ש"ח)</li>
+                        <li>מארז 6 עוגיות X1 (55 ש"ח)</li>
+                        <li>משלוח עד הבית (20 ש"ח)</li>
+                    </ol>
+                </div>
+                <div>
+                    <label class="underline">עלות כולל משלוח:</label>
+                    <input id="Cost" readonly>
+                </div>
+                <div>
+                    <label class="underline">תשלום נבחר:</label>
+                    <input id="PaymentMethod" readonly>
+                </div>
+                <div>
+                    <label class="underline">זמן הגעה משוער:</label>
+                    <input id="ATA" readonly>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
