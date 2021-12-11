@@ -1,11 +1,72 @@
+var method;
+var address;
+
+function set_method(meth) {
+    method = meth;
+    if (method == "Del") {
+        var city_value = document.getElementById("City").value;
+        var street_value = document.getElementById("street").value;
+        var house_value = document.getElementById("houseNum").value;
+        if (city_value && street_value && house_value) {
+            address = { City: city_value, Street: street_value, House: house_value }
+            find_store(address);
+            change_location('OrderCookies.html');
+        } else {
+            alert("אנא מלא את פרטיך");
+        }
+    } else {
+        change_location('OrderCookies.html');
+    }
+}
+
+function find_store(address){
+    // todo
+}
+ 
+
 function change_location(loction) {
-    console.log("s");
+    window.location.href = window.location.href.split("?")[0];
     window.location.href = loction;
 }
 
-
-
 function find_location() {
+    if (window.navigator.geolocation) {
+        const denied_access = a => {
+            alert("לא ניתן למצוא את המיקום שלך...\n אנא הכנס מקום");
+            make_address_editable()
+        }
+        const successfulLookup = position => {
+            const { latitude, longitude } = position.coords;
+            fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=278323ccecb64c7dbaeac9385784430c`)
+                .then(response => response.json()
+                    .then(read_response));
+        }
+        window.navigator.geolocation.getCurrentPosition(successfulLookup, denied_access);
+    } else {
+        alert("לא ניתן למצוא את המיקום שלך...\n אנא הכנס מקום");
+        make_address_editable()
+    }
+}
+
+function read_response(res) {
+    var loc = res.results[0].formatted;
+    console.log(loc);
+    if (loc) {
+        var locs = loc.split(",");
+        document.getElementById('street').value = locs[0];
+        document.getElementById('City').value = locs[1].replace(/\s+/g, '').replace(/[0-9]/g, '');  // "clean" the city from numbers and white spaces
+    }
+
+}
+
+
+function make_address_editable() {
+    var form = document.getElementById("address_form");
+    var inputs = form.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].readOnly = false;
+    }
+
 }
 
 function fillter_cookies(show_class) {
@@ -22,7 +83,7 @@ function fillter_cookies(show_class) {
     }
 }
 
-function send_to_whatsapp(){
+function send_to_whatsapp() {
     var url = "https://api.whatsapp.com/send?phone=+972527333037";
     window.open(url);
 
@@ -83,22 +144,75 @@ function toggle_element_display(elem) {
     }
 }
 
-function toggle_side(side_id){
+function toggle_side(side_id) {
     var side = document.getElementById(side_id);
-    toggle_element_display(side); 
-// make sure the others are hidden (so if you open the cart the menu should close)
+    toggle_element_display(side);
+    // make sure the others are hidden (so if you open the cart the menu should close)
     var sides = document.getElementsByClassName("hidden_side");
     for (let s = 0; s < sides.length; s++) {
-        if (sides[s] != side){
+        if (sides[s] != side) {
             sides[s].style.display = "none";
         }
-        
+
     }
 }
 
-function Send_contact(){
-    var client_name = document.getElementById("NameC").value;
-    var msg = "תודה על הפנייה "+client_name+" אנחנו נחזור אליך בהקדם האפשרי";
-    alert(msg);
+function Send_contact() {
+    if (validate_form('Contact_form', '')) {
+        var client_name = document.getElementById("NameC").value;
+        var msg = "תודה על הפנייה " + client_name + " אנחנו נחזור אליך בהקדם האפשרי";
+        alert(msg);
+        change_location('main.html');
+    }
+}
+
+function update_cost(cart_num, type) {
+    var amount = cart_num + 'a';
+    var cost = cart_num + 'c';
+    var price = 0;
+    switch (type) {
+        case 'singleR':
+            price = 10;
+            break;
+        case '6pack':
+            price = 55;
+            break;
+        case '12pack':
+            price = 105;
+            break;
+        case 'singleS':
+            price = 13;
+            break;
+    }
+    var item_cost = document.getElementById(amount).value * price;
+    document.getElementById(cost).value = item_cost;
+    var cart_costs = document.getElementsByClassName('cost');
+    var total_cost = 0;
+    console.log(cart_costs);
+    for (let c = 0; c < cart_costs.length; c++) {
+        total_cost = total_cost + parseInt(cart_costs[c].value);
+    }
+    document.getElementById('tc').value = total_cost;
+
+}
+
+function validate_form(formID, go_to) {
+    var validate = true;
+    var form = document.getElementById(formID);
+    var inputs = form.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+        if (!inputs[i].checkValidity()) {
+            validate = false
+        }
+    }
+    if (validate) {
+        if (go_to.includes('html')) {
+            change_location(go_to);
+        } else {
+            return true;
+        }
+    } else {
+        alert("!אנא בדוק את הערכים שהכנסת");
+    }
 
 }

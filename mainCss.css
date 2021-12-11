@@ -13,7 +13,16 @@ body {
     font-family     : Verdana;
     font-size       : x-large;
     direction       : rtl;
+}
+#Title {
+    width: 100%;
+}
+#Title span{
+    background-color: var(--BG-color);
+}
 
+.mainP {
+    background-image: url('cookies.png');
 }
 
 button {
@@ -23,7 +32,8 @@ button {
     min-height      : fit-content;
     width           : 5vw;
     min-width       : fit-content;
-    cursor: pointer;
+    cursor          : pointer;
+    margin          : 2%;
 }
 
 p,
@@ -48,7 +58,7 @@ ol {
     position        : static;
     background-color: var(--Head-color);
     grid-area       : header;
-    width           : 100vw;
+    width           : 100%;
     direction       : ltr;
 }
 
@@ -56,13 +66,11 @@ ol {
     cursor: pointer;
 }
 
-td {
-    width: fit-content;
-}
 
 .hiddenD {
     display: none;
 }
+
 
 .main {
     align-content: center;
@@ -118,6 +126,7 @@ table {
 .hidden_side i {
     text-decoration: none;
 }
+
 #menu {
     cursor: pointer;
 }
@@ -230,7 +239,7 @@ img {
 }
 
 .hidden_side {
-    display: none;
+    display         : none;
     position        : fixed;
     background-color: var(--Head-color);
     padding-right   : 2vw;
@@ -283,29 +292,6 @@ img {
 }
 
 
-@media only screen and (max-width: 1000px) {
-    body {
-        font-size: large;
-    }
-
-    .textBox {
-        width: 85vw;
-        right: 5vw;
-    }
-
-    .orderMain {
-        display              : grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .cards_container {
-        grid-column          : 2/ span 1;
-        display              : grid;
-        grid-template-columns: repeat(auto-fill);
-    }
-
-}
-
 .wu_speach_bubble {
     position     : absolute;
     background   : var(--Head-color);
@@ -350,9 +336,17 @@ img {
 }
 
 .add_cookie {
-    width: min-content;
-    border-radius: 10%;
+    width           : min-content;
+    border-radius   : 10%;
     background-color: var(--BG-color);
+}
+
+.shownD {
+    display: block;
+}
+
+.hiddenD {
+    display: none;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -368,16 +362,30 @@ img {
         display: block;
     }
 
+    body {
+        font-size: large;
+    }
+
+    .textBox {
+        width: 85vw;
+        right: 5vw;
+    }
+
+    .orderMain {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards_container {
+        grid-column          : 2/ span 1;
+        display              : grid;
+        grid-template-columns: repeat(auto-fill);
+    }
+
 }
 
 @media only screen and (max-width: 600px) {
-    .shownD {
-        display: none;
-    }
 
-    .hiddenD {
-        display: block;
-    }
 
     form textarea,
     form input {

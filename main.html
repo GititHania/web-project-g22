@@ -7,13 +7,12 @@
     <script src="main.js"></script>
 
     <link rel="stylesheet" href="mainCss.css">
-    <link rel="stylesheet" href="StartCss.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAMA Cookies</title>
 </head>
 
-<body onload="find_location()">
+<body onload="find_location()" class="mainP">
     <div class="hidden_side" id="menu">
         <br>
         <i onclick="change_location('WhoRWe.html')">עמוד הבית <i class="fas fa-home"></i> </i> <br>
@@ -30,24 +29,28 @@
         <br>
         <div>
             <i>עוגית שוקולד מריר עם קינדר</i><br>
-            <input class="cart_inp amount small_input add_cookie" type="number" min="0" max="12" value="2" size="1">
-            <input class="cart_inp cost small_input add_cookie" type="number" min="0" max="12" value="20" size="2"
-                readonly>
-            <button class="add">עדכן</button>
+            <input id="c1a" class="cart_inp amount small_input add_cookie" type="number" min="0" max="100" value="2"
+                size="1">
+            <input id="c1c" class="cart_inp cost small_input add_cookie" type="number" min="0" max="100" value="20"
+                size="2" readonly>
+            <button class="add" onclick="update_cost('c1', 'singleR')">עדכן</button>
         </div>
         <hr class="hr-line long">
         <div>
             <i>מארז 6 עוגיות</i><br>
-            <input class="cart_inp amount small_input add_cookie" type="number" min="0" max="12" value="1" size="1">
-            <input class="cart_inp cost small_input add_cookie" type="number" min="0" max="12" value="55" size="2"
-                readonly>
-            <button class="add">עדכן</button>
+            <input id="c2a" class="cart_inp amount small_input add_cookie" type="number" min="0" max="12" value="1"
+                size="1">
+            <input id="c2c" class="cart_inp cost small_input add_cookie" type="number" min="0" max="100" value="55"
+                size="2" readonly>
+            <button class="add" onclick="update_cost('c2', '6pack')">עדכן</button>
         </div>
         <hr class="hr-line long">
         <hr class="hr-line long">
         <br>
         <p>
-            <i>מחיר כולל 75 ש"ח </i>
+            <i>מחיר כולל <input id="tc" class="small_input add_cookie" type="number" min="0" max="100" value="75"
+                    size="2" readonly>
+                ש"ח </i>
             <button class="add" onclick="change_location('Order_Summery.html')">לתשלום</button>
         </p>
     </div>
@@ -60,32 +63,68 @@
             <i class="fas fa-shopping-cart" onclick="toggle_side('cart')"></i>
             <i class="fas fa-bars" onclick="toggle_side('menu')"></i>
         </div>
-        <div id="StartMain" class="main">
-            <h1 class="page_title" id="Title">MAMA Cookies</h1>
-            <span id="SPBtn">
-                <button> איסוף עצמי </button>
-            </span>
-            <span id="DelBtn">
-                <button> משלוח </button>
-            </span>
-            <span id="editBtn">
-                <button class="fas fa-pen"> </button>
-            </span>
-            <div id="input1">
-                <label for="">בית</label>
-                <input type="text">
-            </div>
-            <div id="input2">
-                <label for="">רחוב</label>
-                <input type="text">
-            </div>
-            <div id="input3">
-                <label for="">עיר</label>
-                <input type="text">
-            </div>
 
+        <div>
+            <h1 class="page_title" id="Title"> <span>MAMA <br class="hiddenD"> Cookies</span> </h1>
+            <form id="address_form" action="">
+                <table>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="">בית</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="">בית</label>
+                        </td>
+                        <td>
+                            <input id="houseNum" type="number">
+                        </td>
+                    <tr>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="">רחוב</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="">רחוב</label>
+                        </td>
+                        <td>
+                            <input id="street" type="text" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="">עיר</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="">עיר</label>
+                        </td>
+                        <td>
+                            <input id="City" type="text" readonly>
+                        </td>
+                    </tr>
 
+                </table>
+                <div class="hiddenD">
+                    <br>
+                    <button type="button" class="fas fa-pen" onclick="make_address_editable()"> </button><br>
+                    <button type="button" onclick="set_method('SP')"> איסוף עצמי </button><br>
+                    <button type="button" onclick="set_method('Del')"> משלוח </button><br>
+                </div>
+                <div class="shownD">
+                    <br>
+                    <button type="button" class="fas fa-pen" onclick="make_address_editable()"> </button>
+                    <button type="button" onclick="set_method('SP')"> איסוף עצמי </button>
+                    <button type="button" onclick="set_method('Del')"> משלוח </button>
+                </div>
+
+            </form>
         </div>
+
     </div>
 </body>
 
