@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="mainCss.css">
@@ -9,28 +10,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
 </head>
+
 <body onload="get_summery()">
+    <div class="hidden_side" id="menu">
+        <br>
+        <i onclick="change_location('WhoRWe.html')">עמוד הבית <i class="fas fa-home"></i> </i> <br>
+        <hr class="hr-line long">
+        <i onclick="change_location('WhoRWe.html')"> מי אנחנו?</i>
+        <hr class="hr-line long">
+        <i onclick="change_location('OrderCookies.html')">הזמנת עוגיות</i>
+        <hr class="hr-line long">
+        <i onclick="change_location('FAQ.html')">שאלות נפוצות</i>
+        <hr class="hr-line long">
+        <i onclick="change_location('ContactUS.html')">צור קשר <i class="fas fa-phone"></i></i>
+    </div>
+    <div class="hidden_side" id="cart">
+        <br>
+        <div>
+            <i>עוגית שוקולד מריר עם קינדר</i><br>
+            <input class="cart_inp amount small_input add_cookie" type="number" min="0" max="12" value="2" size="1">
+            <input class="cart_inp cost small_input add_cookie" type="number" min="0" max="12" value="20" size="2"
+                readonly>
+            <button class="add">עדכן</button>
+        </div>
+        <hr class="hr-line long">
+        <div>
+            <i>מארז 6 עוגיות</i><br>
+            <input class="cart_inp amount small_input add_cookie" type="number" min="0" max="12" value="1" size="1">
+            <input class="cart_inp cost small_input add_cookie" type="number" min="0" max="12" value="55" size="2"
+                readonly>
+            <button class="add">עדכן</button>
+        </div>
+        <hr class="hr-line long">
+        <hr class="hr-line long">
+        <br>
+        <p>
+            <i>מחיר כולל 75 ש"ח </i>
+            <button class="add" onclick="change_location('Order_Summery.html')">לתשלום</button>
+        </p>
+    </div>
     <div class="Container">
-        <div  class="header">
-            MAMA Cookies
+        <div class="header">
+            <span class="MCH">MAMA Cookies</span>
             <i class="fas fa-cookie" onclick="change_location('main.html')"></i>
             <i class="fas fa-phone" onclick="change_location('ContactUs.html')"></i>
-            <i class="fas fa-shopping-cart"  onclick="change_location('Cart.html')"></i>
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-shopping-cart" onclick="toggle_side('cart')"></i>
+            <i class="fas fa-bars" onclick="toggle_side('menu')"></i>
         </div>
         <div class="main">
             <h1 class="page_title">סיכום הזמנה</h1>
-            <div class="textBox" class="Summary">
+            <div class="textBox summary">
                 <div>
                     <label class="title">להלן פרטי הזמנתך</label>
                 </div>
                 <br>
                 <div>
                     <label class="underline"> הזמנתך תצא מסניף</label><br>
-                    <input id="StoreName" readonly ><br>
+                    <input id="StoreName" readonly value="ooo"><br>
                     <input id="StorePhone" readonly>
 
-                </div> 
+                </div>
                 <div>
                     <label class="underline">מוצרים נבחרים</label>
                     <ol>
@@ -40,18 +79,19 @@
                     </ol>
                 </div>
                 <div>
-                    <label class="underline">עלות כולל משלוח:</label>
+                    <label class="underline">עלות כולל משלוח:</label><br>
                     <input id="Cost" readonly>
                 </div>
                 <div>
-                    <label class="underline">תשלום נבחר:</label>
+                    <label class="underline">תשלום נבחר:</label><br>
                     <input id="PaymentMethod" readonly>
                 </div>
                 <div>
-                    <label class="underline">זמן הגעה משוער:</label>
+                    <label class="underline">זמן הגעה משוער:</label><br>
                     <input id="ATA" readonly>
                 </div>
             </div>
         </div>
 </body>
+
 </html>

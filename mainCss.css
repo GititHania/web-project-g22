@@ -23,14 +23,18 @@ button {
     min-height      : fit-content;
     width           : 5vw;
     min-width       : fit-content;
+    cursor: pointer;
 }
 
-p, ol, li {
+p,
+ol,
+li {
     margin: 1%;
 }
+
 ol {
     margin-bottom: 2%;
-    font-size: medium;
+    font-size    : medium;
 }
 
 .Container {
@@ -46,6 +50,10 @@ ol {
     grid-area       : header;
     width           : 100vw;
     direction       : ltr;
+}
+
+.header i {
+    cursor: pointer;
 }
 
 td {
@@ -101,9 +109,18 @@ table {
 .hr-line {
     width : 60%;
     margin: auto;
-
 }
 
+.long {
+    width: 100%;
+}
+
+.hidden_side i {
+    text-decoration: none;
+}
+#menu {
+    cursor: pointer;
+}
 
 /* Style the buttons that are used to open and close the faq-question body */
 .faq-question {
@@ -149,10 +166,10 @@ table {
 }
 
 #mainTl {
-    position: absolute;
-    left    : 35vw;
+    position     : absolute;
+    left         : 35vw;
     margin-bottom: 2vh;
-    top: 0;
+    top          : 0;
 }
 
 .cards_container {
@@ -169,10 +186,20 @@ table {
     height               : 100%;
 }
 
+.filter {
+    border-radius   : 5%;
+    background-color: var(--Head-color);
+}
+
+.add {
+    border-radius: 5%;
+}
+
 .cookie_card {
     background-color: var(--TxBx-color);
     border-radius   : 25%;
-    padding         : 2vw;
+    padding         : 10%;
+    text-align-last : center;
     align-items     : center;
     height          : fit-content;
 }
@@ -199,8 +226,19 @@ img {
     bottom          : 0;
     z-index         : 1;
     height          : 100%;
-    bottom          : 0;
 
+}
+
+.hidden_side {
+    display: none;
+    position        : fixed;
+    background-color: var(--Head-color);
+    padding-right   : 2vw;
+    width           : 20vw;
+    right           : 0;
+    top             : 0;
+    z-index         : 1;
+    padding-bottom  : 1vh;
 }
 
 .popup {
@@ -268,12 +306,74 @@ img {
 
 }
 
-@media only screen and (max-width: 600px) {
+.wu_speach_bubble {
+    position     : absolute;
+    background   : var(--Head-color);
+    padding      : 20px;
+    border-radius: 10px;
+    max-width    : 320px;
+    left         : 1vw;
+    top          : 55vh;
+    cursor       : pointer;
+}
+
+.summary input {
+    background-color: var(--BG-color);
+    border-radius   : 10%;
+    border-color    : var(--TxBx-color);
+}
+
+.wu_speach_bubble::after {
+    position: absolute;
+    content : '';
+    border  : 20px solid transparent;
+}
+
+.right.wu_speach_bubble::after {
+    border-right-color: var(--Head-color);
+    bottom            : -20%;
+    right             : 85%;
+    margin-left       : -20%;
+}
+
+.whatsapp_widgit {
+    position        : fixed;
+    top             : 75vh;
+    left            : 1vw;
+    background-color: green;
+    border-radius   : 55%;
+    z-index         : 3;
+}
+
+.small_input {
+    width: min-content;
+}
+
+.add_cookie {
+    width: min-content;
+    border-radius: 10%;
+    background-color: var(--BG-color);
+}
+
+@media only screen and (max-width: 1024px) {
+    .whatsapp_widgit {
+        left: 1vw;
+    }
 
     .shownD {
         display: none;
     }
 
+    .hiddenD {
+        display: block;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .shownD {
+        display: none;
+    }
 
     .hiddenD {
         display: block;
@@ -288,4 +388,5 @@ img {
         width: 90vw;
         right: 2vw;
     }
+
 }
