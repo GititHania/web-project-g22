@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'summery' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('summery.static', filename='css/summery.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">סיכום הזמנה </h1>
+
+    <div class="popup" id="signinup">
+        {% include 'signinup.html' %}
+    </div>
+    <div class="textBox">
+
+        <br>
+        <div>
+            <label class="underline">המיקום הקרוב ביותר אליך הוא:</label>
+            <p>סניף תל אביב דיזניגוף 205 <br>
+                טל' - 052-9856147 </p>
+        </div>
+        <div>
+            <label class="underline">עלות המשלוח למיקומך:</label>
+            <p>20 ש"ח </p>
+        </div>
+        <div>
+            <label class="underline">עלות כולל משלוח:</label>
+            <p>95 ש"ח </p>
+        </div>
+        <button id="creditBtn" onclick="change_location('payment.html')">תשלום באשראי</button>
+        <button id="chashBtn" onclick="change_location('OrderDetails.html')">תשלום במזומן</button>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('summery.static', filename='js/summery.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,12 @@
+
+body {
+    background-image: url("BGcookies.png")
+    /* background-image: url("cookies.jpg"); */
+}
+
+#Title {
+    width: 100%;
+}
+#Title span{
+    background-color: var(--BG-color);
+}

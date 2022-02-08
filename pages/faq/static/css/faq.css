@@ -1,0 +1,43 @@
+
+/* Style the buttons that are used to open and close the faq-question body */
+.faq-question {
+    color        : rgb(0, 0, 0);
+    border       : none;
+    outline      : none;
+    transition   : 0.4s;
+    margin       : auto;
+    padding      : 1% 4% 1% 4%;
+    border-radius: 25%;
+}
+
+.faq-answer {
+    margin : auto;
+    padding: 1% 4% 1% 4%;
+}
+
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.faq-question:hover {
+    background-color: var(--Head-color);
+}
+
+/* Style the faq-question panel. Note: hidden by default */
+.faq-answer {
+    text-align-last: right;
+    display        : none;
+    overflow       : hidden;
+}
+
+.faq-question:after {
+    content    : '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size  : large;
+    color      : #777;
+    float      : right;
+    margin-left: 1%;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}

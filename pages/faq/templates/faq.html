@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'About' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+
+<link rel="stylesheet" href="{{ url_for('faq.static', filename='css/faq.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">שאלות נפוצות </h1>
+    <div class="textBox">
+        <div class="faq">
+            <!-- faq question -->
+            <p class="faq-question"> כמה זמן משלוח?</p>
+            <!-- faq answer -->
+            <div class="faq-answer">
+                <p>
+                    האתר שלנו יודע לזהות את מיקומך המדויק ולהציע
+                    את הסניף הקרוב ביותר ולפיהם מחשב את זמן המשלוח המוערך עבורך.
+                </p>
+            </div>
+        </div>
+        <hr class="hr-line">
+        <div class="faq">
+            <!-- faq question -->
+            <p class="faq-question"> מהי עלות המשלוח? </p>
+            <!-- faq answer -->
+            <div class="faq-answer">
+                <p>
+                    לפי מיקומך הנוכחי והסניף המוצע עבורך, האתר שלנו יודע לחשב את עלות המשלוח לפי המרחק שלך
+                    מהסניף הנבחר. (מינימום 10 שח דמי משלוח וחצי שקל לכל קילומטר שמעל 4 ק"מ מהסניף).
+                </p>
+            </div>
+        </div>
+        <hr class="hr-line">
+        <div class="faq">
+            <!-- faq question -->
+            <p class="faq-question"> איזה סוגי עוגיות ניתן להזמין? </p>
+            <!-- faq answer -->
+            <div class="faq-answer">
+                <p>
+                    לפי רצונך, תוכל לבחור עוגיות בודדות, לבחור מארז לפי גודל או "להכין" עוגייה בעצמך (בסיס
+                    ותוספת).
+                </p>
+            </div>
+        </div>
+        <hr class="hr-line">
+        <div class="faq">
+            <!-- faq question -->
+            <p class="faq-question"> האם קיימות עוגיות המתאימות לאלרגיים?</p>
+            <!-- faq answer -->
+            <div class="faq-answer">
+                <p>
+                    לצערנו לא :\ בהמשך נוציא קולקציה מיוחדת לאלרגיים לאגוזים.. מתנצלים 😊
+                </p>
+            </div>
+        </div>
+        <hr class="hr-line">
+    </div>
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+
+<script src="{{ url_for('faq.static', filename='js/faq.js') }}"></script>
+{% endblock %}

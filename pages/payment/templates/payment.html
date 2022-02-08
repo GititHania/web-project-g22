@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'payment' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('payment.static', filename='css/payment.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">תשלום </h1>
+    <div class="textBox">
+        <form id="payment_form" action="">
+            <table>
+                <tr>
+                    <td>
+                        <label for="NameP"> שם בעל הכרטיס </label>
+                    </td>
+                    <td>
+                        <input type="text" name="NameP" id="NameP" required /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="IDP"> ת"ז בעל הכרטיס </label> <br />
+                    </td>
+                    <td>
+                        <input type="text" name="IDP" id="IDP" required pattern="[0-9]{9}" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="CardP"> מספר כרטיס אשראי </label> <br />
+                    </td>
+                    <td>
+                        <input type="text" name="CardP" id="CardP" required pattern="[0-9]{12}" /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="TopicC"> תוקף כרטיס </label><br />
+                    </td>
+                    <td>
+                        <input type="number" min="2020" max="2030" size="2" name="YearEx" id="YearEx"
+                            class="small_input" required />
+                        <span>/</span>
+                        <input type="number" min="1" max="12" size="2" name="MonthEx" id="MonthEx" class="small_input"
+                            required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ccvP" class="English"> CCV </label><br />
+                    </td>
+                    <td>
+                        <input type="munber" class="small_input" maxlength=3 size="2" name="ccvP" id="ccvP" required />
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="subbtn" onclick="validate_form('payment_form', 'OrderDetails.html')">שלם</button>
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('payment.static', filename='js/payment.js') }}"></script>
+{% endblock %}

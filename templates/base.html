@@ -1,0 +1,100 @@
+{#
+Base page variables:
+-- page_lang | default: 'en'
+-- page_head_title_author | default: 'Barak Pinchovski'
+-- page_head_title | default: 'Flask skeleton project'
+#}
+
+{#
+Base page blocks:
+- head
+-- page_head
+-- page_head_meta
+--- page_head_meta_extra
+-- page_head_css
+
+- body
+-- page_body_content
+--- page_body_header
+---- page_body_header_content
+----- page_body_header_content__main_menu
+------ page_body_header_content__main_menu_content
+------- page_body_header_content__main_menu_content_links
+--- page_body_main
+---- page_body_main_content
+--- page_body_footer
+---- page_body_footer_content
+-- page_body_js
+#}
+<!DOCTYPE html>
+<html lang="{{ page_lang|default('en', true) }}">
+
+<head>
+    {% block page_head %}
+    {# Title #}
+    <title>MaMa Cookies</title>
+
+    {# Meta tags #}
+    {% block page_head_meta %}
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="author" content="Barak Pinchovski" />
+    <meta name="description" content="Flask skeleton project as a base to start developing on" />
+    <meta name="keywords"
+        content="flask, lean, skeleton, project, structure, environment, setup, template, fullstack, web, development, app, university, education" />
+    {% block page_head_meta_extra %}{% endblock %}
+    {% endblock %}
+
+    {# favicon #}
+    <link rel="icon" href="{{ url_for('static', filename='media/img/icon.jpg') }}" />
+
+    {# Base #}
+    <base href="/" />
+
+    {# CSS #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}" />
+    {% block page_head_css %}{% endblock %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block page_body_content %}
+    <div id="menu" class="hidden_side top">
+        {% include 'main_menu.html' %}
+    </div>
+    <div class="page-mask" id="pm-popups" onclick="close_popup()"></div>
+
+
+    {# sidebar #}
+
+    <div id="cart" class="hidden_side top">
+        {% include 'cart.html' %}
+    </div>
+    {# Header #}
+    <header>
+        {% include 'TopNav.html' %}
+    </header>
+    {% endblock %}
+
+
+
+    {# Main #}
+    {% block page_body_main %}
+    <main class="page-main">
+        {% block page_body_main_content %}
+
+
+        {% endblock %}
+    </main>
+    {% endblock %}
+
+
+    {# JS #}
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+
+    {% block page_body_js %}
+    {% endblock %}
+</body>
+
+</html>

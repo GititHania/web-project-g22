@@ -1,0 +1,24 @@
+
+#newU {
+    display: none;
+}
+
+
+
+@media (max-height: 750px) {
+    .hiddenW {
+        display: none;
+    }
+
+    .shownW {
+        display: block;
+    }
+
+    .popup {
+        top: 5vh;
+    }
+
+    input {
+        left: 0;
+    }
+}

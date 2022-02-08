@@ -1,0 +1,25 @@
+:root {
+    /* Colors */
+    --primary-color: #64b0ff;
+    --primary-contrast-color: white;
+    --secondary-color: black;
+    --secondary-contrast-white: white;
+
+    --BG-color  : #ffe1a6;
+    --Btb-color : chocolate;
+    --Head-color: #fad178;
+    --TxBx-color: #ffc450;
+
+    /* Fonts */
+    --xsite-font-family: Verdana;
+    --xsite-font-size: 16px;
+    --size:  x-large;
+    --dir_h: rtl;
+    --dir_e: ltr;
+    
+    /* Links */
+    --active-menu-item-color: var(--primary-color);
+    --link-color: var(--secondary-color);
+    --active-link-color: var(--primary-color);
+    --visited-link-color: var(--secondary-color);
+}

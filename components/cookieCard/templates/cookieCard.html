@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="{{ url_for('cookieCard.static', filename='css/cookieCard.css') }}" />
+
+<div class="cookie_card">
+    <!-- <img src="cookies/c1.JPG" alt=""> -->
+    {% if type=='cookie' %}
+    <div class='single {{class}}'>
+        <p>
+            <span>
+                {{base}}
+            </span>
+            <span>
+                עם
+            </span>
+            <span>
+                {{topping}}
+            </span>
+        </p>
+        <p>{{price}} ₪</p>
+        <p>
+            <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
+            <button class="add">הוסף</button>
+        </p>
+    </div>
+
+    {% endif%}
+
+    {% if type=='pack' %}
+    <div class="pack">
+        <!-- <img src="cookies/p2.png" alt=""> -->
+        <p>מארז {{size}} עוגיות</p><br>
+        <p>{{price}} ₪</p>
+        <p>
+            <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
+            <button class="add">הוסף</button>
+        </p>
+    </div>
+    {% endif%}
+
+</div>

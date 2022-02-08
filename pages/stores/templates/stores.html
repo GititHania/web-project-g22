@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'stores' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('stores.static', filename='css/stores.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">סניפים</h1>
+    <div class="textBox">
+        {% for store in stores %}
+        <p id="s_city">סניף {{stores[store]['s_city']}}</p>
+        <p>
+            <span id="s_street">{{stores[store]['s_street']}} </span>
+            <span class="smaller-font" id="s_num">{{stores[store]['s_num']}}, </span>
+            <span class="smaller-font" id="s_phone">{{stores[store]['s_phone']}}</span>
+        </p>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('stores.static', filename='js/stores.js') }}"></script>
+{% endblock %}

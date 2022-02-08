@@ -1,0 +1,242 @@
+@import "variables.css";
+
+* {
+    box-sizing: border-box;
+    direction : rtl;
+}
+
+body {
+    margin          : 0;
+    font-family     : var(--xsite-font-family);
+    background-color: var(--BG-color);
+    direction       : var(--dir_h);
+    font-size       : var(--size);
+    text-align-last : center;
+
+}
+
+.hr-line {
+    width : 60%;
+    margin: auto;
+}
+
+.long {
+    width: 100%;
+}
+
+a[href] {
+    color: var(--link-color);
+}
+
+a[href]:visited {
+    color: var(--visited-link-color);
+}
+
+a[href]:active {
+    color: var(--active-link-color);
+}
+
+header {
+    position        : absolute;
+    top             : 0;
+    background-color: var(--Head-color);
+    width           : 100%;
+    direction       : ltr;
+    text-align-last : center;
+    z-index         : 8;
+}
+
+header i {
+    cursor: pointer;
+}
+
+
+button {
+    background-color: var(--Btb-color);
+    border-radius   : 50%;
+    height          : 5vh;
+    min-height      : fit-content;
+    width           : 5vw;
+    min-width       : fit-content;
+    cursor          : pointer;
+    margin          : 2%;
+}
+
+p,
+ol,
+li {
+    margin: 1%;
+}
+
+ol {
+    margin-bottom: 2%;
+    font-size    : medium;
+}
+
+.hiddenD {
+    display: none;
+}
+
+
+.main {
+    align-content: center;
+    grid-area    : main;
+    height       : 100%;
+}
+
+
+.textBox {
+    background-color: var(--TxBx-color);
+    align-self      : center;
+    width           : 65vw;
+    position        : absolute;
+    right           : 18vw;
+    padding         : 2%;
+    font-weight     : bolder;
+    text-align      : justify;
+    border-radius   : 20%;
+    align-content   : center;
+}
+
+table {
+    align-self: center;
+    text-align: justify;
+    margin    : 0 auto;
+}
+
+
+.hidden_side {
+    display         : none;
+    position        : fixed;
+    background-color: var(--Head-color);
+    padding-right   : 2vw;
+    width           : 20vw;
+    right           : 0;
+    top             : 0;
+    z-index         : 4;
+    padding-bottom  : 1vh;
+    border-radius   : 15%;
+}
+
+
+.popup {
+    border          : 2px solid chocolate;
+    background-color: var(--TxBx-color);
+    position        : absolute;
+    top             : 10vh;
+    left            : 30vw;
+    width           : max-content;
+    padding         : 5%;
+    z-index         : 10;
+    display         : none;
+    text-align      : justify;
+    align-items     : justify;
+    border-radius   : 25%;
+    align-content   : center;
+    text-align-last : center;
+}
+
+.popup input {
+    align-self: left;
+}
+
+.popup label {
+    align-self: right;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position  : fixed;
+    top       : 0;
+    right     : 0;
+    bottom    : 0;
+    left      : 0;
+    display   : none;
+    z-index   : 9;
+}
+
+.summary input {
+    background-color: var(--BG-color);
+    border-radius   : 10%;
+    border-color    : var(--TxBx-color);
+}
+
+
+.small_input {
+    width: min-content;
+}
+
+.hiddenW {
+    display: block;
+}
+
+.shownW {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .whatsapp_widgit {
+        left: 1vw;
+    }
+
+    .shownD {
+        display: none;
+    }
+
+    .hiddenD {
+        display: block;
+    }
+
+    body {
+        font-size: large;
+    }
+
+    .textBox {
+        width: 85vw;
+        right: 5vw;
+    }
+
+    .orderMain {
+        display              : grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards_container {
+        grid-column          : 2/ span 1;
+        display              : grid;
+        grid-template-columns: repeat(auto-fill);
+    }
+
+}
+
+.smaller-font {
+    font-size: smaller;
+}
+
+@media only screen and (max-width: 600px) {
+
+    form textarea,
+    form input {
+        width: 70%;
+    }
+
+    .textBox {
+        width: 90vw;
+        right: 2vw;
+    }
+
+}
+
+@media (max-height: 750px) {
+    .hiddenW {
+        display: none;
+    }
+
+    .shownW {
+        display: block;
+    }
+}

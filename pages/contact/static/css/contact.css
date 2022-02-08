@@ -1,0 +1,45 @@
+
+.wu_speach_bubble {
+    position     : absolute;
+    background   : var(--Head-color);
+    padding      : 20px;
+    border-radius: 10px;
+    max-width    : 320px;
+    left         : 0;
+    top          : 55vh;
+    cursor       : pointer;
+}
+
+
+.wu_speach_bubble::after {
+    position: absolute;
+    content : '';
+    border  : 20px solid transparent;
+}
+
+.right.wu_speach_bubble::after {
+    border-right-color: var(--Head-color);
+    bottom            : -20%;
+    right             : 85%;
+    margin-left       : -20%;
+}
+
+.whatsapp_widgit {
+    position        : fixed;
+    top             : 75vh;
+    left            : 1vw;
+    background-color: green;
+    border-radius   : 55%;
+    z-index         : 3;
+}
+
+form input{
+    width: 130%;
+}
+form textarea{
+    width: 130%;
+}
+
+form label{
+    margin-left: 2vw;
+}

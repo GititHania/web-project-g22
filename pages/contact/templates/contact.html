@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'contact' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('contact.static', filename='css/contact.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">צור קשר </h1>
+    <i class="fab fa-whatsapp fa-2x whatsapp_widgit" onclick="send_to_whatsapp()"></i>
+    <div class="wu_speach_bubble right shownD" onclick="send_to_whatsapp()">דברו איתנו<br>בwhatsapp </div>
+    <div class="textBox">
+        <form id='Contact_form' action="">
+            <table>
+                <tr>
+                    <td class="shownD">
+                        <label for="NameC"> שם מלא </label>
+                    </td>
+                    <td>
+                        <label for="NameC" class="hiddenD"> שם מלא </label>
+                        <input type="text" name="NameC" id="NameC" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="shownD">
+                        <label for="EmailC"> כתובת דוא"ל </label>
+                    </td>
+                    <td>
+                        <label for="EmailC" class="hiddenD"> כתובת דוא"ל </label>
+                        <input type="email" name="EmailC" id="EmailC" required pattern="^[^ ]+@[^ ]+\.[a-z]{2,6}$" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="shownD">
+                        <label for="PhoneC"></label> טלפון </label>
+                    </td>
+                    <td>
+                        <label for="PhoneC" class="hiddenD"> טלפון </label>
+                        <input type="tel" name="PhoneC" id="PhoneC" required pattern="[0-9]{10}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="shownD">
+                        <label for="TopicC" class="shownD"> נושא פנייה </label>
+                    </td>
+                    <td>
+                        <label for="TopicC" class="hiddenD"> נושא פנייה </label>
+                        <input type="text" name="TopicC" id="TopicC" required />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="shownD">
+                        <label for="Input"> טקסט חופשי </label><br />
+                    </td>
+                    <td>
+                        <label for="Input" class="hiddenD"> טקסט חופשי </label><br />
+                        <textarea name="Input" id="Input" rows="10"
+                            placeholder="זה המקום לשתף, אנחנו מקשיבים..."></textarea><br />
+
+                    </td>
+                </tr>
+            </table>
+            <button type="button" onclick="Send_contact()">שלח</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('contact.static', filename='js/contact.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'תפריט' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+
+<link rel="stylesheet" href="{{ url_for('catalog.static', filename='css/catalog.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 id="mainTl" class="page_title">בחר עוגיות </h1>
+    <div id="assemble" class="popup">
+        <h2>הרכבה אישית </h2>
+        <form action="">
+            <label for="base"> בסיס עוגיה </label> <br />
+            <select name="baseSelect" id="baseSelect">
+                <option value="Dark">מריר</option>
+                <option value="Milk">חלב</option>
+                <option value="White">לבן</option>
+            </select>
+            <br>
+            <label for="addition"> תוספת </label><br />
+            <select name="toppingSelect" id="toppingSelect">
+                <option value="MandM">M&M</option>
+                <option value="chocoChip">שוקולד ציפס</option>
+                <option value="Kinder">קינדר</option>
+                <option value="Nutella">נוטלה</option>
+                <option value="Peanuts">בוטנים</option>
+            </select>
+            <br>
+            <p>13 ₪</p>
+            <button>הוסף</button>
+
+        </form>
+    </div>
+    <div class="page-mask" id="pm-side" onclick="close_side()"></div>
+
+    <div class="Container">
+
+        <div class="orderMain">
+
+            <div class="side_nav">
+                <h2 class="underline">בסיס</h2>
+                <button class='filter' onclick="fillter_cookies('dark')">מריר</button><br>
+                <button class='filter' onclick="fillter_cookies('milk')">חלב</button> <br>
+                <button class='filter' onclick="fillter_cookies('white')">לבן</button><br>
+
+                <h2 class="underline">סוג</h2>
+                <button class='filter' onclick="fillter_cookies('pack')">מארז</button><br>
+                <button class='filter' onclick="fillter_cookies('single')">בודדת</button><br>
+                <br>
+
+                <button onclick="fillter_cookies('cookie_card')">מחק פילטרים</button>
+                <button onclick="open_popup('assemble')">הרכבה אישית</button>
+            </div>
+            <div class="cards_container">
+                {% for cookie in cookies%}
+                {% with type='cookie',class=cookies[cookie]['class']  , base=cookies[cookie]['base'] ,topping=cookies[cookie]['topping'] ,
+                price=cookies[cookie]['price'] %}
+                {% include 'cookieCard.html' %}
+                {% endwith %}
+                {% endfor %}
+
+
+                {% for pack in packs %}
+                {% with type='pack', size=packs[pack]['size'] , price=packs[pack]['price'] %}
+                {% include 'cookieCard.html' %}
+                {% endwith %}
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('catalog.static', filename='js/catalog.js') }}"></script>
+{% endblock %}

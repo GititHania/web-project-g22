@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'About' %}
+
+{% block page_head_css %}
+    <link rel="stylesheet" href="{{ url_for('about.static', filename='css/about.css') }}"/>
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1 class="page_title">מי אנחנו </h1>
+    <div class="textBox">
+        <p id="MC"> MAMA Cookies </p>
+                <p>
+
+                    הינו עסק עוגיות המנוהל על ידי מאמא חנה באזור המרכז. מאמא חנה הינה אישה מבוגרת שעבדה כל חייה כגננת
+                    בגן ילדים. כל חייה בני משפחה, הילדים שבגן והורי הגן היללו את מאפיה של מאמא חנה ובמיוחד את העוגיות
+                    המיוחדות שלה, אשר מותאמות הן מבחינת תזונה בריאה והן מבחינת הטעם לילדים שבגן.
+                </p>
+                <p>
+                    כאשר מאמא חנה הגיעה לגיל 60 היא הבינה שלמרות אהבה הגדולה לילדים היא אינה יכולה פיזית להמשיך במקצועה
+                    כגננת. עקב המצב מאמא חנה החליטה שהיא תמשיך עם אהבתה הגדולה השנייה ופתחה חנות עוגיות מושחתת.
+                </p>
+                <p>
+                    מאמא חנה החליטה שהיא רוצה לחלוק את הטעם המיוחד של העוגיות שלה עם שאר העולם לאחר שראתה כי העוגיות שלה
+                    מצליחות לשמח אנשים ולהוות המנה המנחמת עבור כל אירוע.
+                </p>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+    <script src="{{ url_for('about.static', filename='js/about.js') }}"></script>
+{% endblock %}
