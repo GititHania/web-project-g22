@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'my_acount' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('registration.static', filename='css/registration.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+
+<div class="main">
+    <h1 class="page_title">האזור האישי של {{session["full_name"]}} </h1>
+    <button onclick="change_location('/log_out')">התנתק</button>
+
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('registration.static', filename='js/registration.js') }}"></script>
+{% endblock %}

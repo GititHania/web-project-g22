@@ -1,15 +1,27 @@
 <link rel="stylesheet" href="{{ url_for('main_menu.static', filename='css/main-menu.css') }}" />
 <script src="https://kit.fontawesome.com/3a10c9cc85.js" crossorigin="anonymous"></script>
 <br>
-<a href="{{'/'}}">עמוד הבית <i class="fas fa-home"></i> </a> 
+<a href="{{'/'}}">עמוד הבית <i class="fas fa-home"></i> </a>
 <hr class="hr-line long">
+{% if session["logged_in"] %}
+<a href="my_acount">אזור אישי <i class="fas fa-user"></i></a>
+<hr class="hr-line long">
+<a href="{{'log_out'}}"> התנתק <i class="fas fa-sign-out-alt"></i></a>
+<hr class="hr-line long">
+{% else %}
+<a href="{{'registration'}}"> התחבר <i class="fas fa-sign-in-alt"></i></a>
+<hr class="hr-line long">
+{% endif %}
 <a href="{{'about'}}"> מי אנחנו?</a>
 <hr class="hr-line long">
 <a href="{{'stores'}}">חנויות </a>
 <hr class="hr-line long">
-<a href = "{{'catalog'}}">הזמנת עוגיות</a>
-<hr class="hr-line long">
-<a href="{{'FAQ'}}">שאלות נפוצות</a>
-<hr class="hr-line long">
 <a href="{{'contact'}}">צור קשר <i class="fas fa-phone"></i></a>
+<hr class="hr-line long">
+<a href="{{'catalog'}}">הזמנת עוגיות</a>
+<hr class="hr-line long">
+<a href="{{'FAQ'}}">שאלות נפוצות </a>
+<hr class="hr-line long">
+<a href="{{'suggestions'}}">תיבת ההצעות <i class="fas fa-envelope-open-text"></i></i></a>
+
 <br>

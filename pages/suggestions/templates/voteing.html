@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'suggestions' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('suggestions.static', filename='css/suggestions.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="popup" id="signinup">
+    {% include 'signinup.html' %}
+</div>
+<div class="main">
+    <h1 class="page_title">הצבעה להצעות </h1>
+    
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('suggestions.static', filename='js/vote.js') }}"></script>
+{% endblock %}

@@ -9,32 +9,32 @@
 {% endblock %}
 
 {% block page_body_main_content %}
+<div id="assemble" class="popup">
+    <h2>הרכבה אישית </h2>
+    <form action="">
+        <label for="base"> בסיס עוגיה </label> <br />
+        <select name="baseSelect" id="baseSelect">
+            <option value="Dark">מריר</option>
+            <option value="Milk">חלב</option>
+            <option value="White">לבן</option>
+        </select>
+        <br>
+        <label for="addition"> תוספת </label><br />
+        <select name="toppingSelect" id="toppingSelect">
+            <option value="MandM">M&M</option>
+            <option value="chocoChip">שוקולד ציפס</option>
+            <option value="Kinder">קינדר</option>
+            <option value="Nutella">נוטלה</option>
+            <option value="Peanuts">בוטנים</option>
+        </select>
+        <br>
+        <p>13 ₪</p>
+        <button>הוסף</button>
+    </form>
+</div>
 <div class="main">
     <h1 id="mainTl" class="page_title">בחר עוגיות </h1>
-    <div id="assemble" class="popup">
-        <h2>הרכבה אישית </h2>
-        <form action="">
-            <label for="base"> בסיס עוגיה </label> <br />
-            <select name="baseSelect" id="baseSelect">
-                <option value="Dark">מריר</option>
-                <option value="Milk">חלב</option>
-                <option value="White">לבן</option>
-            </select>
-            <br>
-            <label for="addition"> תוספת </label><br />
-            <select name="toppingSelect" id="toppingSelect">
-                <option value="MandM">M&M</option>
-                <option value="chocoChip">שוקולד ציפס</option>
-                <option value="Kinder">קינדר</option>
-                <option value="Nutella">נוטלה</option>
-                <option value="Peanuts">בוטנים</option>
-            </select>
-            <br>
-            <p>13 ₪</p>
-            <button>הוסף</button>
-
-        </form>
-    </div>
+    
     <div class="page-mask" id="pm-side" onclick="close_side()"></div>
 
     <div class="Container">

@@ -1,10 +1,11 @@
+
 <link rel="stylesheet" href="{{ url_for('signinup.static', filename='css/signinup.css') }}" />
 
-
-<h3> בשביל להמשיך בהזמנה <br class="hiddenD" />צריך להיות מחוברים לאתר</h4>
+<div class="main">
+    
     <div id="newU">
         <h2>משתמש חדש </h2>
-        <form action="">
+        <form action="register()" method="post" id="register-form">
             <table>
                 <tr>
                     <td class="shownW">
@@ -52,7 +53,7 @@
                     </td>
                 </tr>
             </table>
-            <button id="createUBtn">צור משתמש חדש</button><br class="hiddenW" />
+            <button id="createUBtn" type="submit">צור משתמש חדש</button><br class="hiddenW" />
         </form>
         <button onclick="toggle_inup('newU','exUs')">יש לי כבר משתמש</button>
     </div>
@@ -68,4 +69,6 @@
         <button onclick="toggle_inup('exUs','newU')">אין לי משתמש</button>
     </div>
 
-    <script src="{{ url_for('signinup.static', filename='js/signinup.js') }}"></script>
+</div>
+
+<script src="{{ url_for('signinup.static', filename='js/signinup.js') }}"></script>

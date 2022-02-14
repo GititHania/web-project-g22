@@ -15,6 +15,10 @@ app.register_blueprint(homepage)
 from pages.about.about import about
 app.register_blueprint(about)
 
+## registration
+from pages.registration.registration import registration
+app.register_blueprint(registration)
+
 ## summery
 from pages.summery.summery import summery
 app.register_blueprint(summery)
@@ -43,6 +47,9 @@ app.register_blueprint(contact)
 from pages.stores.stores import stores
 app.register_blueprint(stores)
 
+## suggestions
+from pages.suggestions.suggestions import suggestions
+app.register_blueprint(suggestions)
 
 ## Page error handlers
 # from pages.page_error_handlers.page_error_handlers import page_error_handlers
@@ -72,5 +79,4 @@ from components.cookieCard.cookieCard import cookieCard
 app.register_blueprint(cookieCard)
 
 
-# if name = '__main__':
 app.run()

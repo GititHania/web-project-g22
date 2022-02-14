@@ -69,3 +69,7 @@ img {
     z-index   : 3;
 
 }
+
+.popup {
+    left            : 35vw;
+}

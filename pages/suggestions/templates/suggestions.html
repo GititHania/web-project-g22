@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'suggestions' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('suggestions.static', filename='css/suggestions.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="popup" id="signinup">
+    {% include 'signinup.html' %}
+</div>
+<div class="main">
+    <h1 class="page_title">תיבת ההצעות </h1>
+    <div class="textBox">
+        <p>
+            חושבים שאתם יכולים לחשוב על רעיון טוב לעוגיה?<br>
+            הכניסו את הרעיון שלכם בטופס למטה, <br>
+            כל הצעה תעבור להצבעה בחודש הבא<br>
+            על ידי הלקוחות האחרים, <br>
+            ובכל חודש ההצעה הזוכה תיכנס לתפריט,<br>
+            והלקוח.ה שהציע.ה אותה ת.יזכה ב<span class="smaller-font">10%</span> הנחה לרכישתו.ה הבאה:)<br>
+
+        </p>
+        <p class="smaller-font">*ההשתתפות הינה ללקוחות רשומים בלבד </p>
+        <button onclick="open_popup('signinup')">התחבר/הרשם</button>
+        <button onclick="open_sg('sg_form')"> מילוי טופס הצעה</button>
+        <button onclick="open_sg('vote')"> הצבעה </button>
+        <div class="popup" id="sg_form">
+            <form action="" method="post">
+                <label for="baseSg">איזה בסיס?</label>
+                <label for="toppingSg">איזה תוספת?</label>
+                <label for="textSg">משהו להוסיף?</label>
+            </form>
+        </div>
+
+        <div class="popup" id="vote_form">
+            
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('suggestions.static', filename='js/suggestions.js') }}"></script>
+{% endblock %}

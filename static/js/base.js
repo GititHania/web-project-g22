@@ -42,3 +42,4 @@ function open_popup(popup_id) {
     popup.style.display = "inline-block";
     document.getElementById("pm-popups").style.display = "block";
 }
+

@@ -1,0 +1,32 @@
+
+#newU {
+    display: none;
+}
+
+h2 {
+    text-decoration:underline;
+}
+
+#not_matched {
+    display: none;
+    color: red;
+    font-size: medium;
+}
+
+@media (max-height: 750px) {
+    .hiddenW {
+        display: none;
+    }
+
+    .shownW {
+        display: block;
+    }
+
+    .popup {
+        top: 5vh;
+    }
+
+    input {
+        left: 0;
+    }
+}

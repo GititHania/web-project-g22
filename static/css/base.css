@@ -124,7 +124,7 @@ table {
     background-color: var(--TxBx-color);
     position        : absolute;
     top             : 10vh;
-    left            : 30vw;
+    left            : 25vw;
     width           : max-content;
     padding         : 5%;
     z-index         : 10;
@@ -178,6 +178,10 @@ table {
     display: none;
 }
 
+.smaller-font {
+    font-size: smaller;
+}
+
 @media only screen and (max-width: 1024px) {
     .whatsapp_widgit {
         left: 1vw;
@@ -213,9 +217,7 @@ table {
 
 }
 
-.smaller-font {
-    font-size: smaller;
-}
+
 
 @media only screen and (max-width: 600px) {
 
