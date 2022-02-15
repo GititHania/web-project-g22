@@ -7,11 +7,27 @@ h2 {
     text-decoration:underline;
 }
 
-#not_matched {
+.caption {
     display: none;
     color: red;
     font-size: medium;
 }
+#alert {
+    display: inline-block;
+    padding:1%;
+    top: 30vh;
+    left: 40vw;
+}
+
+#alert-popups{
+    display: block;
+}
+
+.inline_btn {
+    border-radius: 25%;
+    background-color: var(--Head-color);
+}
+
 
 @media (max-height: 750px) {
     .hiddenW {

@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block page_body_main_content %}
+{% if session["logged_in"] %}
 <div class="popup" id="signinup">
-    <h3> בשביל להמשיך בהזמנה <br class="hiddenD" />יש להיות מחוברים לאתר</h4>
-        {% include 'signinup.html' %}
+    <h3> בשביל להמשיך בהזמנה <br/>יש להיות מחוברים לאתר</h4>
+       <button onclick="change_location('/registration')">התחבר לאתר</button>
 </div>
+{% endif %}
 <div class="main">
     <h1 class="page_title">סיכום הזמנה </h1>
-
-
     <div class="textBox">
 
         <br>

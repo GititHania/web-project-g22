@@ -1,10 +1,13 @@
-from unicodedata import name
 from flask import Flask
+from flask_session import Session
 
 
 ###### App setup
 app = Flask(__name__)
 app.config.from_pyfile('settings.py')
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 ###### Pages
 ## Homepage
@@ -77,6 +80,5 @@ app.register_blueprint(signinup)
 ## cookieCard
 from components.cookieCard.cookieCard import cookieCard
 app.register_blueprint(cookieCard)
-
 
 app.run()

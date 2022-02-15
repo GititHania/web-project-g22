@@ -12,8 +12,8 @@ class Users:
             f"INSERT INTO customers (Email, Password, FullName, PhoneNumber) VALUES ('{email}', '{password}', '{full_name}', '{phone_num}')")
 
     @staticmethod
-    def update_password(user_email, password):
-        return dbManager.commit(f"UPDATE customers SET password='{password}' WHERE Email={user_email}")
+    def update_Info(email, full_name, password, phone_num):
+        return dbManager.commit(f"UPDATE `group22`.`customers` SET `Password` ='{password}', `FullName` = '{full_name}', `PhoneNumber` = '{phone_num}' WHERE `Email` = '{email}';")
 
     @staticmethod
     def delete_user(email):

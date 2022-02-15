@@ -7,12 +7,27 @@
 {% endblock %}
 
 {% block page_body_main_content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="page-mask" id="alert-popups" onclick="close_alert_popup()"></div>
+<div class="popup" id="alert">
+    {% for msg in messages %}
+    {{msg}}
+    <br>
+    {% endfor %}
+    <button onclick="close_alert_popup()"> <i class="fas fa-check"></i> </button>
+</div>
+{% endif %}
+{% endwith %}
+
 <div class="main">
+
     <h1 class="page_title"> כניסה לאתר </h1>
+
     <div class="textBox">
         <div id="newU">
             <h2>משתמש חדש </h2>
-            <form action="/register" method="post" id="register-form">
+            <form action="/register" method="post" id="register-form" onsubmit="return validate_reg()">
                 <table>
                     <tr>
                         <td class="shownW">
@@ -53,26 +68,29 @@
                         </td>
                         <td>
                             <label for="PasswordNU" class="hiddenW"> סיסמא </label>
-                            <input type="password" name="PasswordNU" id="PasswordNU" onchange="check_match()" required
-                                pattern="[A-Za-z0-9]{6}"
+                            <input type="password" name="PasswordNU" id="PasswordNU"
+                                onkeyup="check_pass('PasswordNU','PasswordNUSec')" required pattern="[A-Za-z0-9]{6, }"
                                 oninvalid="this.setCustomValidity('הכנס סיסמא באורך של 6 ספרות או אותיות באנגלית לפחות בבקשה!')"
                                 oninput="this.setCustomValidity('')" />
+                            <br> <span class="caption" id="too_short">הסיסמה קצרה מידי... </span>
+
                         </td>
+
                     </tr>
+
                     <tr>
                         <td class="shownW">
                             <label for="PasswordNUSec"> סיסמא בשנית </label>
                         </td>
                         <td>
                             <label for="PasswordNUSec" class="hiddenW"> סיסמא בשנית </label>
-                            <input type="password" name="PasswordNUSec" id="PasswordNUSec" onchange="check_match()"
-                                required />
-                            <br> <span id="not_matched">הסיסמאות לא זהות... </span>
+                            <input type="password" name="PasswordNUSec" id="PasswordNUSec"
+                                onkeyup="check_pass('PasswordNU','PasswordNUSec')" required />
+                            <br> <span class="caption" id="not_matched">הסיסמאות לא זהות... </span>
                         </td>
                     </tr>
                 </table>
-                <button onclick="validate_reg()" id="createUBtn" type="submit">צור משתמש חדש</button><br
-                    class="hiddenW" />
+                <button id="createUBtn" type="submit">צור משתמש חדש</button><br class="hiddenW" />
                 <button onclick="toggle_inup('newU','exUs')" type="button">יש לי כבר משתמש</button>
 
             </form>
@@ -85,8 +103,8 @@
                     oninvalid="this.setCustomValidity('הכנס כתובת מייל תקינה בבקשה!')"
                     oninput="this.setCustomValidity('')" /><br />
                 <label for="PasswordEU"> סיסמא </label><br />
-                <input type="password" name="PasswordEU" id="PasswordEU"  required 
-                oninvalid="this.setCustomValidity('הכנס סיסמה בבקשה!')"
+                <input type="password" name="PasswordEU" id="PasswordEU" required
+                    oninvalid="this.setCustomValidity('הכנס סיסמה בבקשה!')"
                     oninput="this.setCustomValidity('')" /><br /><br />
                 <button id="logInUBtn">התחבר</button>
                 <button onclick="toggle_inup('exUs','newU')" type="button">אין לי משתמש</button>

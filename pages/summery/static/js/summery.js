@@ -1,16 +1,14 @@
-var logged = false;
-
 
 function check_if_loged_in(){
-    // check if looged in
-    if (!logged) {
+    alert(session["logged_in"])
+    if (!session["logged_in"]) {
         open_popup("signinup");
     }
 }
 
 
 function close_popup() {
-    if (!logged) {
+    if (!session["logged_in"]) {
         alert("על מנת להמשיך יש להירשם או להתחבר לאתר.")
     } else {
         document.getElementById("pm-popups").style.display = "none";

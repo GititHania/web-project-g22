@@ -7,11 +7,97 @@
 {% endblock %}
 
 {% block page_body_main_content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="page-mask" id="alert-popups" onclick="close_alert_popup()"></div>
+<div class="popup" id="alert">
+    {% for msg in messages %}
+    {{msg}}
+    <br>
+    {% endfor %}
+    <button onclick="close_alert_popup()"> <i class="fas fa-check"></i> </button>
+</div>
+{% endif %}
+{% endwith %}
+<div class="popup" id="edit_info_pu">
+    <h2>משתמש חדש </h2>
+    <form action="/edit_user" method="post" id="register-form" onsubmit="return validate_reg()">
+        <table>
+            <tr>
+                <td class="shownW">
+                    <label for="NameN"> שם מלא </label>
+                </td>
+                <td>
+                    <label for="NameN" class="hiddenW"> שם מלא </label>
+                    <input type="text" name="NameN" id="NameN" pattern=".{2,} .{2,}"
+                        oninvalid="this.setCustomValidity('הכנס שם מלא בבקשה!')" oninput="this.setCustomValidity('')" />
+                </td>
+            </tr>
 
+            <tr>
+                <td class="shownW">
+                    <label for="PhoneN">טלפון </label>
+                </td>
+                <td>
+                    <label for="PhoneN" class="hiddenW">טלפון </label>
+                    <input type="tel" name="PhoneN" id="PhoneN" pattern="[0-9]{10}"
+                        oninvalid="this.setCustomValidity('הכנס מספר טלפון תקין בבקשה!')"
+                        oninput="this.setCustomValidity('')" />
+                </td>
+            </tr>
+            <tr>
+                <td class="shownW">
+                    <label for="PasswordN"> סיסמא </label>
+                </td>
+                <td>
+                    <label for="PasswordN" class="hiddenW"> סיסמא </label>
+                    <input type="password" name="PasswordN" id="PasswordN"
+                        onkeyup="check_pass('PasswordN', 'PasswordNSec')" pattern="[A-Za-z0-9]{6, }"
+                        oninvalid="this.setCustomValidity('הכנס סיסמא באורך של 6 ספרות או אותיות באנגלית לפחות בבקשה!')"
+                        oninput="this.setCustomValidity('')" />
+                        <br> <span class="caption" id="too_short">הסיסמה קצרה מידי... </span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="shownW">
+                    <label for="PasswordNUSec"> סיסמא בשנית </label>
+                </td>
+                <td>
+                    <label for="PasswordNSec" class="hiddenW"> סיסמא בשנית </label>
+                    <input type="password" name="PasswordNSec" id="PasswordNSec"
+                        onkeyup="check_pass('PasswordN', 'PasswordNSec')" />
+                    <br> <span class="caption" id="not_matched">הסיסמאות לא זהות... </span>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <button id="editUBtn" type="submit">ערוך פרטים</button>
+    </form>
+    <button id="closeUBtn" onclick="close_popup()"><i class="fa fa-times"></i></button>
+
+</div>
 <div class="main">
     <h1 class="page_title">האזור האישי של {{session["full_name"]}} </h1>
-    <button onclick="change_location('/log_out')">התנתק</button>
 
+    <div class="textBox">
+        <p>
+        <h3>
+            היי {{session["full_name"]}} איזה כיף לראות אותך פה שוב!
+        </h3>
+        רוצה עוגיות? רוצה לעבור לתפריט? <br class="hiddenD">
+        <button class="inline_btn" onclick="change_location('catalog')"> <i class="fas fa-cookie"></i></button>
+        <br />יש לך דברים בעגלה... רוצה לעבור לקופה? <br class="hiddenD">
+        <button class="inline_btn" onclick="change_location('summery')"> <i class="fas fa-cash-register"></i></button>
+        <br />צברת בנתיים {} נקודות (שווה ל{} שקלים)<br />
+        <br />הפרטים האישים השתנו? אפשר לשנות אותם פה: <br class="hiddenD">
+        <button class="inline_btn" onclick="open_popup('edit_info_pu')"><i class="fas fa-user-edit"></i></button>
+
+        </p>
+
+
+        <button onclick="change_location('/log_out')">התנתק</button>
+    </div>
 
 </div>
 {% endblock %}

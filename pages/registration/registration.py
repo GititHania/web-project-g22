@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, request, session
+from flask import Blueprint, render_template, redirect, request, session, flash, url_for
 from utilities.db.users import Users
 
 # registration blueprint definition
@@ -28,7 +28,10 @@ def register():
     password = request.form.get("PasswordNU")
     result = Users.get_user(email)
     if result and len(result) >= 1:
-        return f'הדוא"ל הזה כבר קיים במערכת, אולי התכוונת להתחבר?'
+        flash('כתובת הדוא"ל הזו כבר קיימת במערכת ')
+        flash('אולי התכוונת להתחבר?')
+        return redirect('registration')
+
     else:
         if Users.insert_user(email, full_name, password, phone_num) > 0:
             session["email"] = email
@@ -36,7 +39,9 @@ def register():
             session["logged_in"] = True
             return redirect('\my_acount')
         else:
-            return "ההרשמה נכשלה:( אנא נסו שוב", 400
+            flash('נראה שההרשמה נכשלה:(')
+            flash('אנא נסו שוב')
+            return redirect('registration')
 
 
 @registration.route('/log_in', methods=["POST"])
@@ -44,17 +49,19 @@ def log_in():
     email = request.form.get("EmailEU")
     password = request.form.get("PasswordEU")
     result = Users.get_user(email)
-    print(result)
     if not result:
-        return f"The mail {email} not exists. Try register instead/", 400
+        flash("הכתובת שהוכנסה לא קיימת אצלנו.. ")
+        flash(" אנא נסו שוב או הירשמו")
+        return redirect('registration')
 
     elif result[0].Password == password:
         session["email"] = result[0].Email
         session["full_name"] = result[0].FullName
         session["logged_in"] = True
-        return redirect('\my_acount')
+        return redirect('my_acount')
     else:
-        return "Incorrect password. Try again.", 400
+        flash("הסיסמה לא נכונה... נסו שוב")
+        return redirect('registration')
 
 
 @registration.route('/log_out')
@@ -64,3 +71,23 @@ def log_out():
     session["logged_in"] = False
     return redirect('/')
 
+
+@registration.route('/edit_user', methods=["POST"])
+def edit():
+    user_email = session["email"]
+    old_details = Users.get_user(user_email)
+    print(request.form)
+    full_name = request.form.get("NameN")
+    phone_num = request.form.get("PhoneN")
+    password = request.form.get("PasswordN")
+    print(full_name)
+    new_name = full_name if full_name else old_details[0].FullName
+    new_phone_num = phone_num if phone_num else old_details[0].PhoneNumber
+    new_password = password if password else old_details[0].Password
+    if Users.update_Info(user_email, new_name, new_password, new_phone_num) >0:
+        session["full_name"] = new_name
+    else:
+        flash("לא הצלחנו לשנות את הפרטים...")
+        flash("נסה שוב")
+
+    return redirect('my_acount')
