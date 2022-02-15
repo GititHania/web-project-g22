@@ -21,6 +21,10 @@
         <button class="add" onclick="update_cost('c2', '6pack')">עדכן</button>
     </div>
     <hr class="hr-line long">
+    <form action="/update" method="get">
+        <input type="text" name="loc" id="loc" hidden>
+        <button type="submit">dsd</button>
+    </form>
     <hr class="hr-line long">
     <br>
     <p>
@@ -30,3 +34,4 @@
         <button class="add" onclick="change_location('summery')">לתשלום</button>
     </p>
 </div>
+<script src="{{ url_for('cart.static', filename='js/cart.js') }}"></script>

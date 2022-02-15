@@ -49,6 +49,8 @@ def log_in():
     email = request.form.get("EmailEU")
     password = request.form.get("PasswordEU")
     result = Users.get_user(email)
+    print("here")
+
     if not result:
         flash("הכתובת שהוכנסה לא קיימת אצלנו.. ")
         flash(" אנא נסו שוב או הירשמו")
@@ -84,7 +86,7 @@ def edit():
     new_name = full_name if full_name else old_details[0].FullName
     new_phone_num = phone_num if phone_num else old_details[0].PhoneNumber
     new_password = password if password else old_details[0].Password
-    if Users.update_Info(user_email, new_name, new_password, new_phone_num) >0:
+    if Users.update_Info(user_email, new_name, new_password, new_phone_num) > 0:
         session["full_name"] = new_name
     else:
         flash("לא הצלחנו לשנות את הפרטים...")

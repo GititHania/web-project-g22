@@ -12,7 +12,6 @@ function toggle_side(side_id) {
 }
 
 function toggle_element_display(elem) {
-    console.log(elem)
     pm = document.getElementById("pm-side")
     if (elem.style.display === "block") {
         if (pm) {

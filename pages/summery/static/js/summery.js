@@ -1,6 +1,8 @@
 
 function check_if_loged_in(){
-    alert(session["logged_in"])
+    myStorage = window.sessionStorage;
+
+    alert(myStorage)
     if (!session["logged_in"]) {
         open_popup("signinup");
     }
