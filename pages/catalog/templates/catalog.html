@@ -43,29 +43,28 @@
 
             <div class="side_nav">
                 <h2 class="underline">בסיס</h2>
-                <button class='filter' onclick="fillter_cookies('dark')">מריר</button><br>
-                <button class='filter' onclick="fillter_cookies('milk')">חלב</button> <br>
-                <button class='filter' onclick="fillter_cookies('white')">לבן</button><br>
+                <button class='filter' onclick="fillter_cookies('Dark')">מריר</button><br>
+                <button class='filter' onclick="fillter_cookies('Milk')">חלב</button> <br>
+                <button class='filter' onclick="fillter_cookies('White')">לבן</button><br>
 
                 <h2 class="underline">סוג</h2>
                 <button class='filter' onclick="fillter_cookies('pack')">מארז</button><br>
                 <button class='filter' onclick="fillter_cookies('single')">בודדת</button><br>
                 <br>
 
-                <button onclick="fillter_cookies('cookie_card')">מחק פילטרים</button>
+                <button onclick="fillter_cookies('cookie_card')">מחק פילטרים</button> <br>
                 <button onclick="open_popup('assemble')">הרכבה אישית</button>
             </div>
+            <form action="/catalog/add"></form>
             <div class="cards_container">
                 {% for cookie in cookies%}
-                {% with type='cookie',class=cookies[cookie]['class']  , base=cookies[cookie]['base'] ,topping=cookies[cookie]['topping'] ,
-                price=cookies[cookie]['price'] %}
+                {% with type='cookie',class=cookie.Class  , base=cookie.Base ,topping=cookie.Topping ,
+                price=cookie.Price, imgSrc=cookie.ImgSrc %}
                 {% include 'cookieCard.html' %}
                 {% endwith %}
                 {% endfor %}
-
-
                 {% for pack in packs %}
-                {% with type='pack', size=packs[pack]['size'] , price=packs[pack]['price'] %}
+                {% with type='pack', size=pack.Size , price=pack.Price , imgSrc=pack.ImgSrc%}
                 {% include 'cookieCard.html' %}
                 {% endwith %}
                 {% endfor %}

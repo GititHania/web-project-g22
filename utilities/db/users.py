@@ -1,7 +1,7 @@
 from utilities.db.db_manager import dbManager
 
 
-class Users:
+class User:
     @staticmethod
     def get_user(email):
         return dbManager.fetch(f"SELECT * FROM customers WHERE Email='{email}'")

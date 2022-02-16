@@ -1,3 +1,17 @@
 #cart {
-    font-size: medium;
+    font-size: large;
+}
+
+button {
+    height: min-content;
+    width: min-content;
+}
+
+i {
+    cursor: pointer;
+}
+
+.cart_inp {
+    width: min-content;
+    background-color: var(--Back-color);
 }

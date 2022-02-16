@@ -1,39 +1,41 @@
 <link rel="stylesheet" href="{{ url_for('cookieCard.static', filename='css/cookieCard.css') }}" />
+<script src="{{ url_for('cookieCard.static', filename='js/cookieCard.js') }}"></script>
 
-<div class="cookie_card">
-    <!-- <img src="cookies/c1.JPG" alt=""> -->
-    {% if type=='cookie' %}
-    <div class='single {{class}}'>
-        <p>
-            <span>
-                {{base}}
-            </span>
-            <span>
-                עם
-            </span>
-            <span>
-                {{topping}}
-            </span>
-        </p>
-        <p>{{price}} ₪</p>
-        <p>
-            <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
-            <button class="add">הוסף</button>
-        </p>
-    </div>
-
-    {% endif%}
-
-    {% if type=='pack' %}
-    <div class="pack">
-        <!-- <img src="cookies/p2.png" alt=""> -->
-        <p>מארז {{size}} עוגיות</p><br>
-        <p>{{price}} ₪</p>
-        <p>
-            <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
-            <button class="add">הוסף</button>
-        </p>
-    </div>
-    {% endif%}
-
+{% if type=='cookie' %}
+<div class='single {{class}} cookie_card'>
+    <p>
+        <img src="{{imgSrc}}" alt="cookie img" class="cookie_img single {{topping}}"><br>
+        <span>
+            עוגיית
+        </span>
+        <span id="base">
+            {{base}}
+        </span>
+        <span>
+            עם
+        </span>
+        <span id="toping">
+            {{topping}}
+        </span>
+    </p>
+    <p>{{price}} ₪</p>
+    <p>
+        <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
+        <button class="add" onclick="addCookie()">הוסף</button>
+    </p>
 </div>
+
+{% endif%}
+
+{% if type=='pack' %}
+<div class="pack cookie_card">
+    <img src="{{imgSrc}}" alt="pack img" class="cookie_img pack {{size}}"><br>
+
+    <p>מארז {{size}} עוגיות</p><br>
+    <p>{{price}} ₪</p>
+    <p>
+        <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
+        <button class="add">הוסף</button>
+    </p>
+</div>
+{% endif%}

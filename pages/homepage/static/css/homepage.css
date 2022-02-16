@@ -1,7 +1,10 @@
 
 body {
     background-image: url("BGcookies.png")
-    /* background-image: url("cookies.jpg"); */
+}
+
+input {
+    background-color: aliceblue;
 }
 
 #Title {

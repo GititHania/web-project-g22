@@ -73,10 +73,6 @@ app.register_blueprint(cart)
 from components.TopNav.TopNav import TopNav
 app.register_blueprint(TopNav)
 
-## signinup
-from components.signinup.signinup import signinup
-app.register_blueprint(signinup)
-
 ## cookieCard
 from components.cookieCard.cookieCard import cookieCard
 app.register_blueprint(cookieCard)
