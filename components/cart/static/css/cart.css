@@ -2,7 +2,7 @@
     font-size: large;
 }
 
-button {
+.add {
     height: min-content;
     width: min-content;
 }

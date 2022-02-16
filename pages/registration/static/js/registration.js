@@ -43,7 +43,3 @@ function validate_reg() {
     return true
 }
 
-function close_alert_popup() {
-    document.getElementById("alert-popups").style.display = "none";
-    document.getElementById("alert").style.display = "none";
-}

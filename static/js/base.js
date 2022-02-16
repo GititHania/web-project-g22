@@ -43,3 +43,7 @@ function open_popup(popup_id) {
     document.getElementById("pm-popups").style.display = "block";
 }
 
+function close_alert_popup() {
+    document.getElementById("alert-popups").style.display = "none";
+    document.getElementById("alert").style.display = "none";
+}

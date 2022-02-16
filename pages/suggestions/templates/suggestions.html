@@ -7,9 +7,27 @@
 {% endblock %}
 
 {% block page_body_main_content %}
-<div class="popup" id="signinup">
-    {% include 'signinup.html' %}
+{% if not session["logged_in"] %}
+<div class="popup" id="signin">
+    האפשרות להציע רעיונות <br>
+    ולהצביע שמורה לחברינו הרשומים בלבד. <br>
+    התחברו וגם אתם תוכלו להצביע:)
+    <button onclick="change_location('/registration')">בטח!</button>
+    <button onclick="close_popup()">פעם הבאה</button>
 </div>
+{% endif %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="page-mask" id="alert-popups" onclick="close_alert_popup()"></div>
+<div class="popup" id="alert">
+    {% for msg in messages %}
+    {{msg}}
+    <br>
+    {% endfor %}
+    <button onclick="close_alert_popup()"> <i class="fas fa-check"></i> </button>
+</div>
+{% endif %}
+{% endwith %}
 <div class="main">
     <h1 class="page_title">תיבת ההצעות </h1>
     <div class="textBox">
@@ -23,21 +41,57 @@
 
         </p>
         <p class="smaller-font">*ההשתתפות הינה ללקוחות רשומים בלבד </p>
-        <button onclick="open_popup('signinup')">התחבר/הרשם</button>
-        <button onclick="open_sg('sg_form')"> מילוי טופס הצעה</button>
-        <button onclick="open_sg('vote')"> הצבעה </button>
+        <button onclick="change_location('/registration')">התחבר/הרשם</button> <br class="hiddenD">
+        <button onclick="open_sg('proposal')"> מילוי טופס הצעה</button> <br class="hiddenD">
+        <button onclick="open_sg('vote')"> הצבעה </button> <br class="hiddenD">
         <div class="popup" id="sg_form">
-            <form action="" method="post">
-                <label for="baseSg">איזה בסיס?</label>
-                <label for="toppingSg">איזה תוספת?</label>
-                <label for="textSg">משהו להוסיף?</label>
+            <form action="/new_sg" method="post">
+                <table>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="baseSg">איזה בסיס?</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="baseSg">איזה בסיס?</label>
+                        </td>
+                        <td>
+                            <input type="text" name="baseSg" id="baseSg"> <br>
+                        </td>
+                    <tr>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="toppingSg">איזה תוספת?</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="toppingSg">איזה תוספת?</label>
+                        </td>
+                        <td>
+                            <input type="text" name="toppingSg" id="toppingSg">
+                        </td>
+                    <tr>
+                    <tr>
+                        <td class="hiddenD">
+                            <label for="textSg">משהו להוסיף?</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="shownD">
+                            <label for="textSg">משהו להוסיף?</label>
+                        </td>
+                        <td>
+                            <textarea name="textSg" id="textSg" ></textarea> 
+                        </td>
+                    <tr>
+                </table>
+
+                <button type="submit">שלח <i class="fas fa-paper-plane"></i></button>
+                <button onclick="close_popup()" type="button"> <i class="fas fa-times"></i></button>
             </form>
         </div>
-
-        <div class="popup" id="vote_form">
-            
-        </div>
-
     </div>
 
 </div>

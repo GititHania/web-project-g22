@@ -12,7 +12,10 @@
 {% block page_body_main_content %}
 
 <div>
+    <br>
     <h1 class="page_title" id="Title"> <span>MAMA <br class="hiddenD"> Cookies</span> </h1>
+    <br>
+    <br>
     <form id="address_form" action="" method="post">
         <table>
             <tr>
@@ -68,8 +71,26 @@
             <button type="button" onclick="set_method('SP')"> איסוף עצמי </button>
             <button type="button" onclick="set_method('Del')"> משלוח </button>
         </div>
-
     </form>
+
+    <div id="msg">
+        {% if session["logged_in"] %}
+        <span>
+            היי {{session["full_name"]}} <br>
+            איזה כיף לראות אותך שוב!! <br>
+            <button type="button" onclick="change_location('my_acount')">אזור אישי</button>
+        </span>
+         {% else %}
+        <span>
+            התחברו או הרשמו על מנת להנות מצבירת נקודות <br />
+            והנחות מיוחדות לחברים בלבד
+            <br />
+            <button type="button" onclick="change_location('registration')"> התחבר </button>
+        </span>
+        {% endif %}
+
+    </div>
+
 </div>
 
 {% endblock %}

@@ -1,6 +1,5 @@
-
 body {
-    background-image: url("BGcookies.png")
+    background-image: url("BGcookies.jpg")
 }
 
 input {
@@ -10,6 +9,42 @@ input {
 #Title {
     width: 100%;
 }
-#Title span{
+
+#Title span {
+    color           : var(--Btb-color);
+    font-size       : larger;
     background-color: var(--BG-color);
+}
+
+#msg {
+    font-weight: 700;
+    font-size  : xx-large;
+    font-style : italic;
+}
+
+button {
+    font-size : large;
+    min-height: max-content;
+}
+
+label {
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1024px) {
+    * {
+        font-size: x-large;
+    }
+
+    button {
+        border-radius: 25%;
+    }
+
+    #signin {
+        left: 40vw;
+    }
+
+    label {
+        background-color: var(--BG-color);
+    }
 }

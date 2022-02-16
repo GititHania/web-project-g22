@@ -1,10 +1,15 @@
-function open_sg(form_id){
-    var logged_in= "<%= Session['logged_in']%>";
-    console.log(logged_in)
-    if (logged_in) {
-        open_popup(form_id);
+function open_sg(form_name){
+    login_popup = document.getElementById("signin");
+    if (login_popup) {
+        open_popup("signin");
     } else {
-        alert("ההצבעה הינה ללקוחות רשומים בלבד")
-        change_location
+        switch(form_name){
+            case "vote":
+                change_location('/voting');
+                break;
+            case "proposal":
+                open_popup("sg_form");
+                break
+        }
     }
 }

@@ -1,0 +1,14 @@
+#sg_form {
+    right: 18vw;
+}
+
+#alert {
+    display: inline-block;
+    padding:1%;
+    top: 30vh;
+    left: 40vw;
+}
+
+#alert-popups{
+    display: block;
+}

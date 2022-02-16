@@ -7,10 +7,18 @@
 {% endblock %}
 
 {% block page_body_main_content %}
-{% if session["logged_in"] %}
-<div class="popup" id="signinup">
-    <h3> בשביל להמשיך בהזמנה <br/>יש להיות מחוברים לאתר</h4>
-       <button onclick="change_location('/registration')">התחבר לאתר</button>
+{% if not session["logged_in"] %}
+<div class="popup" id="signin">
+    <h3> לפני שנמשיך אולי תרצה להתחבר?</h3>
+    <p>
+        ממש כדאי לך! <br>
+        החברים שלנו נהנים מהנחות מיוחדות <br>
+        משתתפים בתחרויות <br>
+        ויכולים לצבור נקודות מהקניות <br>
+        ולהשתמש בהם בפעמים הבאות <br>
+    </p>
+    <button onclick="change_location('/registration')">בטח!</button>
+    <button onclick="close_popup()">פעם הבאה</button>
 </div>
 {% endif %}
 <div class="main">
@@ -31,8 +39,11 @@
             <label class="underline">עלות כולל משלוח:</label>
             <p>95 ש"ח </p>
         </div>
-        <button id="creditBtn" onclick="change_location('payment.html')">תשלום באשראי</button>
-        <button id="chashBtn" onclick="change_location('OrderDetails.html')">תשלום במזומן</button>
+        <button id="creditBtn" onclick="change_location('payment.html')">תשלום באשראי</button> <br class="hiddenD">
+        <button id="chashBtn" onclick="change_location('OrderDetails.html')">תשלום במזומן</button> <br class="hiddenD">
+        {% if not session["logged_in"] %}
+        <button onclick="change_location('/registration')">התחבר</button>
+        {% endif %}
     </div>
 
 </div>
