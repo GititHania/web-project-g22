@@ -64,17 +64,20 @@ function add_to_cart(key, info) {
         window.sessionStorage.setItem("cartItems", JSON.stringify(first));
         add_to_cart(key, info)
     }
-    console.log(JSON.parse(window.sessionStorage.getItem("cartItems")));
+    console.log(JSON.parse(window.sessionStorage.getItem("cartItems"))); 
+    set_cart()
 }
 
 function add_custom_made() {
+    console.log("(Geolocation()")
     amount = document.getElementById("amount_cus").value;
     base = document.getElementById("baseSelect").value;
     topping = document.getElementById("toppingSelect").value;
-    title = "עוגיית "+base+" עם "+topp;ing;
+    title = "עוגיית "+base+" עם "+topping;
     var cus_cookie = {
-        'base': base, 'topping': topping, 'amount': amount, 'title': title
+        'base': base, 'topping': topping, 'amount': amount, 'title': title, 'price' : 13
     }
     var key = base + topping;
     add_to_cart(key, cus_cookie);
+    close_popup()
 }

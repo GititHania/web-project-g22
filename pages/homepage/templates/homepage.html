@@ -3,9 +3,10 @@
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}" />
-
+<script type="text/javascript">
+    var storeList = "{{ storeList }}";
+</script>
 {% endblock %}
-
 
 {% set page_head_title = 'בית' %}
 
@@ -16,7 +17,7 @@
     <h1 class="page_title" id="Title"> <span>MAMA <br class="hiddenD"> Cookies</span> </h1>
     <br>
     <br>
-    <form id="address_form" action="" method="post">
+    <form id="address_form" action="/set_method" method="post">
         <table>
             <tr>
                 <td class="hiddenD">
@@ -28,7 +29,7 @@
                     <label for="">בית</label>
                 </td>
                 <td>
-                    <input id="houseNum" type="number">
+                    <input name="house" id="houseNum" type="number">
                 </td>
             <tr>
             <tr>
@@ -41,7 +42,7 @@
                     <label for="">רחוב</label>
                 </td>
                 <td>
-                    <input id="street" type="text" readonly>
+                    <input name="street" id="street" type="text" readonly>
                 </td>
             </tr>
             <tr>
@@ -54,9 +55,13 @@
                     <label for="">עיר</label>
                 </td>
                 <td>
-                    <input id="City" type="text" readonly>
+                    <input name="City" id="City" type="text" readonly>
                 </td>
             </tr>
+            <input type="text" name="meth" id="meth_inp" hidden >
+            <input type="text" name="storeID" id="storeID" hidden>
+
+
 
         </table>
         <div class="hiddenD">
@@ -73,6 +78,32 @@
         </div>
     </form>
 
+    <div class="popup" id="choose_store_del">
+        <p>אין לנו סניף בעיר שלך...<br>
+             אנא בחר את הסניף הקרוב ביותר אליך<br> 
+            *משלוח מחוץ לעיר של הסניף כרוך  <br>
+             בתוספת של 10 ש"ח לדמי המשלוח
+        </p>
+        <select name="store" id="storeSelectD">
+            {% for store in storeList %}
+            <option value="{{store.id}}">{{store.city}} {{store.street}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button onclick="set_store('storeSelectD')">בחר</button>
+    </div>
+
+    <div class="popup" id="choose_store_sp">
+        <p>באיזה סניף יהיה לך היה נוח לבוא לבקר?</p>
+        <select name="store" id="storeSelectS">
+            {% for store in storeList %}
+            <option value="{{store.id}}">{{store.city}} {{store.street}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button onclick="set_store('storeSelectS')">בחר</button>
+    </div>
+
     <div id="msg">
         {% if session["logged_in"] %}
         <span>
@@ -80,7 +111,7 @@
             איזה כיף לראות אותך שוב!! <br>
             <button type="button" onclick="change_location('my_acount')">אזור אישי</button>
         </span>
-         {% else %}
+        {% else %}
         <span>
             התחברו או הרשמו על מנת להנות מצבירת נקודות <br />
             והנחות מיוחדות לחברים בלבד
@@ -95,9 +126,6 @@
 
 {% endblock %}
 
-
 {% block page_body_js %}
 <script src="{{ url_for('homepage.static', filename='js/homepage.js') }}"></script>
-
-
 {% endblock %}

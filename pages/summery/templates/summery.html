@@ -4,9 +4,21 @@
 
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('summery.static', filename='css/summery.css') }}" />
+<script type="text/javascript">
+    var discount = "{{discount}}";
+    var store = "{{store}}"  
+</script>
 {% endblock %}
 
 {% block page_body_main_content %}
+<div class="popup" id="no_method">
+    <p>נראה שלא בחרת כיצד תרצה לקבל את העוגיות...
+        <br>
+        אנא חזור לעמוד הבית ובחר את השיטה שתרצה
+        <br>
+        <button onclick="change_location('/')"><i class="fas fa-home"></i></button>
+    </p>
+</div>
 {% if not session["logged_in"] %}
 <div class="popup" id="signin">
     <h3> לפני שנמשיך אולי תרצה להתחבר?</h3>
@@ -23,21 +35,37 @@
 {% endif %}
 <div class="main">
     <h1 class="page_title">סיכום הזמנה </h1>
+    {% if storeList %}
     <div class="textBox">
-
         <br>
         <div>
-            <label class="underline">המיקום הקרוב ביותר אליך הוא:</label>
-            <p>סניף תל אביב דיזניגוף 205 <br>
-                טל' - 052-9856147 </p>
+            <label class="underline">הסניף הקרוב ביותר אליך הוא:</label>
+            <p>
+                <span id="s_name"></span>
+                <span id="s_num"></span>
+                <br>
+                <span id="s_phone"></span>
+            </p>
         </div>
-        <div>
+        <div id="as_sp">
+            בחרת לאסוף את המוצרים בעצמך, <br>
+            איזה כיף! נוכל לראות אותך! <br>
+            הכל אמור להיות מוכן בעוד כ25 דקות <br>
+        </div>
+        {% if session["logged_in"] %}
+        <div id="dis_div">
+            הנחה:
+            <span id="discount">{discount}</span>
+            %
+        </div>
+        {% endif %}
+        <div id="as_del">
             <label class="underline">עלות המשלוח למיקומך:</label>
-            <p>20 ש"ח </p>
+            <p id="del_cost"> </p>
         </div>
         <div>
-            <label class="underline">עלות כולל משלוח:</label>
-            <p>95 ש"ח </p>
+            <label class="underline">עלות כוללת:</label>
+            <p id="tot_cost"></p>
         </div>
         <button id="creditBtn" onclick="change_location('payment')">תשלום באשראי</button> <br class="hiddenD">
         <button id="chashBtn" onclick="change_location('orderDetails')">תשלום במזומן</button> <br class="hiddenD">
@@ -45,7 +73,7 @@
         <button onclick="change_location('/registration')">התחבר</button>
         {% endif %}
     </div>
-
+    {% endif %}
 </div>
 {% endblock %}
 

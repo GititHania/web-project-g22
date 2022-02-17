@@ -13,18 +13,32 @@
     <h2>הרכבה אישית </h2>
     <label for="base"> בסיס עוגיה </label> <br />
     <select name="baseSelect" id="baseSelect">
-        <option value="Dark">מריר</option>
-        <option value="Milk">חלב</option>
-        <option value="White">לבן</option>
+        <option value="שוקולד מריר">
+            מריר
+        </option>
+        <option value="שוקולד חלב">
+            חלב
+        </option>
+        <option value="שוקולד לבן">
+            לבן
+        </option>
     </select>
     <br>
     <label for="addition"> תוספת </label><br />
     <select name="toppingSelect" id="toppingSelect">
-        <option value="MandM">M&M</option>
-        <option value="chocoChip">שוקולד ציפס</option>
-        <option value="Kinder">קינדר</option>
-        <option value="Nutella">נוטלה</option>
-        <option value="Peanuts">בוטנים</option>
+        <option value="M&M">M&M</option>
+        <option value="שוקולד ציפס">
+            שוקולד ציפס
+        </option>
+        <option value="קינדר">
+            קינדר
+        </option>
+        <option value="נוטלה">
+            נוטלה
+        </option>
+        <option value="בוטנים">
+            בוטנים
+        </option>
     </select>
     <br>
     <input class="small_input add_cookie" type="number" max="12" min="0" value="1" id="amount_cus">
@@ -51,7 +65,6 @@
                 <button onclick="fillter_cookies('cookie_card')">מחק פילטרים</button> <br>
                 <button onclick="open_popup('assemble')">הרכבה אישית</button>
             </div>
-            <!-- <form action="/catalog/add"> -->
             <div class="cards_container">
                 {% for cookie in cookies%}
                 {% with c=cookie, id=cookie.CookieID, type='cookie',class=cookie.Class , base=cookie.Base
@@ -66,7 +79,6 @@
                 {% endwith %}
                 {% endfor %}
             </div>
-            <!-- </form> -->
         </div>
     </div>
 </div>
