@@ -8,20 +8,24 @@
         <span>
             עוגיית
         </span>
-        <span id="base">
+        <span id="base{{id}}">
             {{base}}
         </span>
         <span>
             עם
         </span>
-        <span id="toping">
+        <span id="toping{{id}}">
             {{topping}}
         </span>
     </p>
-    <p>{{price}} ₪</p>
     <p>
-        <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
-        <button class="add" onclick="addCookie()">הוסף</button>
+        <span id="price{{id}}">
+            {{price}} ₪
+        </span>
+    </p>
+    <p>
+        <input class="small_input add_cookie" type="number" max="12" min="0" value="1" id="amount{{id}}">
+        <button class="add" onclick="addCookie({{id}})">הוסף</button>
     </p>
 </div>
 
@@ -30,12 +34,21 @@
 {% if type=='pack' %}
 <div class="pack cookie_card">
     <img src="{{imgSrc}}" alt="pack img" class="cookie_img pack {{size}}"><br>
-
-    <p>מארז {{size}} עוגיות</p><br>
-    <p>{{price}} ₪</p>
     <p>
-        <input class="small_input add_cookie" type="number" max="12" min="0" value="1">
-        <button class="add">הוסף</button>
+        <span> מארז</span>
+        <span id="size{{id}}"> {{size}} </span>
+        <span>עוגיות</span>
+    </p>
+    <p>
+        <span id="pricep{{id}}">
+            {{price}} ₪
+        </span>
+    </p>
+    <p>
+        <input class="small_input add_cookie" type="number" max="12" min="0" value="1" id="amountp{{id}}">
+        <button class="add" onclick="addPack({{id}})">הוסף</button>
     </p>
 </div>
 {% endif%}
+
+<script src="{{ url_for('cookieCard.static', filename='js/cookieCard.js') }}"></script>

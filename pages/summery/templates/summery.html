@@ -39,8 +39,8 @@
             <label class="underline">עלות כולל משלוח:</label>
             <p>95 ש"ח </p>
         </div>
-        <button id="creditBtn" onclick="change_location('payment.html')">תשלום באשראי</button> <br class="hiddenD">
-        <button id="chashBtn" onclick="change_location('OrderDetails.html')">תשלום במזומן</button> <br class="hiddenD">
+        <button id="creditBtn" onclick="change_location('payment')">תשלום באשראי</button> <br class="hiddenD">
+        <button id="chashBtn" onclick="change_location('orderDetails')">תשלום במזומן</button> <br class="hiddenD">
         {% if not session["logged_in"] %}
         <button onclick="change_location('/registration')">התחבר</button>
         {% endif %}
