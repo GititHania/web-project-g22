@@ -71,8 +71,9 @@ function add_custom_made() {
     amount = document.getElementById("amount_cus").value;
     base = document.getElementById("baseSelect").value;
     topping = document.getElementById("toppingSelect").value;
+    title = "עוגיית "+base+" עם "+topp;ing;
     var cus_cookie = {
-        'base': base, 'topping': topping, 'amount': amount
+        'base': base, 'topping': topping, 'amount': amount, 'title': title
     }
     var key = base + topping;
     add_to_cart(key, cus_cookie);

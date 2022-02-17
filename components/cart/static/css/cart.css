@@ -4,14 +4,16 @@
 
 .add {
     height: min-content;
-    width: min-content;
+    width : min-content;
 }
 
-i {
+.cartI {
     cursor: pointer;
+    margin-left: 0.5ch;
 }
 
 .cart_inp {
-    width: min-content;
+    width           : 6ch;
     background-color: var(--Back-color);
+    margin          : 1ch;
 }
