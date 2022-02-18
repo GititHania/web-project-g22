@@ -17,3 +17,8 @@
     background-color: var(--Back-color);
     margin          : 1ch;
 }
+
+#empty_cart {
+    cursor: pointer;
+    font-style: italic;
+}

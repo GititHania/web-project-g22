@@ -52,17 +52,20 @@
     <div class="Container">
         <div class="orderMain">
             <div class="side_nav">
+
                 <h2 class="underline">בסיס</h2>
-                <button class='filter' onclick="fillter_cookies('Dark')">מריר</button><br>
-                <button class='filter' onclick="fillter_cookies('Milk')">חלב</button> <br>
-                <button class='filter' onclick="fillter_cookies('White')">לבן</button><br>
-
+                <form action="/base" method="get">
+                    <button class='filter' value="Dark" name="base" type="submit">מריר</button><br>
+                    <button class='filter' value="Milk" name="base" type="submit">חלב</button><br>
+                    <button class='filter' value="White" name="base" type="submit">לבן</button><br>
+                </form>
                 <h2 class="underline">סוג</h2>
-                <button class='filter' onclick="fillter_cookies('pack')">מארז</button><br>
-                <button class='filter' onclick="fillter_cookies('single')">בודדת</button><br>
-                <br>
-
-                <button onclick="fillter_cookies('cookie_card')">מחק פילטרים</button> <br>
+                <form action="/type" method="get">
+                    <button class='filter' value="pack" name="type" type="submit">מארז</button><br>
+                    <button class='filter' value="single" name="type" type="submit">בודדת</button><br>
+                    <br>
+                </form>
+                <button onclick="change_location('catalog')">מחק פילטרים</button> <br>
                 <button onclick="open_popup('assemble')">הרכבה אישית</button>
             </div>
             <div class="cards_container">

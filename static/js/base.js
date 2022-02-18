@@ -34,6 +34,11 @@ function set_cart() {
         cart_div = document.getElementById('cart_items');
         cart_div.innerHTML = "";
         keys = Object.keys(cart);
+        if (keys.length < 2) {
+            document.getElementById("empty_cart").style.display = "block"
+        } else {
+            document.getElementById("empty_cart").style.display = "none"
+        }
         var total_cost = 0;
         keys.forEach(key => {
             if (key != 'key') {
@@ -85,8 +90,9 @@ function set_cart() {
         });
         document.getElementById("total_cost_inp").value = total_cost;
         window.sessionStorage.setItem("total_cost", total_cost);
+    } else {
+        document.getElementById("empty_cart").style.display = "block"
     }
-
 }
 
 function update_cost(am_id, key) {

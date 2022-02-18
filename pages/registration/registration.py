@@ -16,7 +16,8 @@ def index():
 @registration.route('/my_acount')
 def ma_index():
     if session.get("logged_in"):
-        return render_template('my_acount.html')
+        user = User.get_user(session["email"])[0]
+        return render_template('my_acount.html', points = user.Points)
     return redirect("/registration")
 
 
@@ -93,3 +94,14 @@ def edit():
         flash("נסה שוב")
 
     return redirect('my_acount')
+
+
+@registration.route('/delete', methods=["POST"])
+def delete():
+    user_email = session["email"]
+    if User.delete_user(user_email):
+        return redirect('/')
+    else:
+        flash("משהו קרה ולא הצלחנו למחוק את המתשמש שלך...")
+        flash("נסה שוה (או תוותר ותישאר חבר שלנו:))")
+        return redirect('my_acount')

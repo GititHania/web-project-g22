@@ -10,3 +10,8 @@ class Store:
     def get_store(storeID):
         return dbManager.fetch(f"SELECT * FROM stores WHERE  `storeID`="+storeID)
 
+    @staticmethod
+    def find_store(cust_city):
+        cust_city.replace(" ", "")
+        return dbManager.fetch(f"SELECT StoreID FROM stores WHERE  `storeID`="+cust_city)
+

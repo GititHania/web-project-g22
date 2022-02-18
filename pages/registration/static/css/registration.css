@@ -27,6 +27,9 @@ h2 {
     border-radius: 25%;
     background-color: var(--Head-color);
 }
+#things_in_cart {
+    display: none;
+}
 
 
 @media (max-height: 750px) {

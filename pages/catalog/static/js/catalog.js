@@ -22,20 +22,6 @@ function add_imgs() {
 }
 
 
-function fillter_cookies(show_class) {
-    cookie_cards = document.getElementsByClassName('cookie_card');
-    for (let i = 0; i < cookie_cards.length; i++) {
-        var card = cookie_cards[i]
-        var classes = card.classList;
-        card.style.display = "none";
-        for (let c = 0; c < classes.length; c++) {
-            if (classes[c] == show_class) {
-                card.style.display = "block";
-            }
-        }
-    }
-}
-
 function start_cart() {
     if (!sessionStorage.getItem("cartItems")) {
         sessionStorage.setItem("cartItems", JSON.stringify({ 'key': 'cookieInfo' }))

@@ -4,20 +4,25 @@
 
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('payment.static', filename='css/payment.css') }}" />
+<script type="text/javascript">
+    var card = '{{card}}'
+</script>
 {% endblock %}
 
 {% block page_body_main_content %}
 <div class="main">
     <h1 class="page_title">תשלום </h1>
     <div class="textBox">
-        <form id="payment_form" action="">
+        <form id="payment_form" action="/paying" method="post">
             <table>
                 <tr>
                     <td>
                         <label for="NameP"> שם בעל הכרטיס </label>
                     </td>
                     <td>
-                        <input type="text" name="NameP" id="NameP" required /> <br />
+                        <input type="text" name="NameP" id="NameP" pattern=".{2,} .{2,}" required
+                            oninvalid="this.setCustomValidity('הכנס שם מלא בבקשה!')"
+                            oninput="this.setCustomValidity('')" /> <br />
                     </td>
                 </tr>
                 <tr>
@@ -25,7 +30,8 @@
                         <label for="IDP"> ת"ז בעל הכרטיס </label> <br />
                     </td>
                     <td>
-                        <input type="text" name="IDP" id="IDP" required pattern="[0-9]{9}" />
+                        <input type="text" name="IDP" id="IDP" required pattern="[0-9]{9}"
+                            oninvalid="this.setCustomValidity('תז לא תקינה')" oninput="this.setCustomValidity('')" />
 
                     </td>
                 </tr>
@@ -34,19 +40,23 @@
                         <label for="CardP"> מספר כרטיס אשראי </label> <br />
                     </td>
                     <td>
-                        <input type="text" name="CardP" id="CardP" required pattern="[0-9]{12}" /> <br />
+                        <input type="text" name="CardP" id="CardP" required pattern="[0-9]{12}"
+                            oninvalid="this.setCustomValidity('המספר לא תקין, נסה שוב!')"
+                            oninput="this.setCustomValidity('')" /> <br />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="TopicC"> תוקף כרטיס </label><br />
+                        <label for="expire"> תוקף כרטיס </label><br />
                     </td>
                     <td>
                         <input type="number" min="2020" max="2030" size="2" name="YearEx" id="YearEx"
-                            class="small_input" required />
+                            class="small_input" required oninvalid="this.setCustomValidity('הכנס שנה מלאה בבקשה!!')"
+                            oninput="this.setCustomValidity('')" />
                         <span>/</span>
                         <input type="number" min="1" max="12" size="2" name="MonthEx" id="MonthEx" class="small_input"
-                            required />
+                            required oninvalid="this.setCustomValidity('הכנס חודש מלא בבקשה!')"
+                            oninput="this.setCustomValidity('')" />
                     </td>
                 </tr>
                 <tr>
@@ -54,11 +64,20 @@
                         <label for="ccvP" class="English"> CCV </label><br />
                     </td>
                     <td>
-                        <input type="munber" class="small_input" maxlength=3 size="2" name="ccvP" id="ccvP" required />
+                        <input type="munber" class="small_input" maxlength=3 size="2" name="ccvP" id="ccvP" required
+                            oninvalid="this.setCustomValidity('הכנס CCV תקין בבקשה!')"
+                            oninput="this.setCustomValidity('')" /> 
                     </td>
                 </tr>
+               
             </table>
-            <button type="button" id="subbtn" onclick="validate_form('payment_form', 'OrderDetails.html')">שלם</button>
+            {% if session["logged_in"] %}
+            <tr>
+                <input type="checkbox" name="save_card" id="save_card">
+                <label class="small_inp" for="save_card">תרצה שנשמור את פרטי האשראי שלך לפעם הבאה?</label>
+            </tr> <br>
+            {% endif %}
+            <button type="submit" id="subbtn">שלם</button>
         </form>
 
     </div>

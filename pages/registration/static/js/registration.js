@@ -12,7 +12,7 @@ function check_pass(mainID, secID) {
     } else {
         caption.style.display = "block";
     }
-    if (main.value.length < 6){
+    if (main.value.length < 6) {
         document.getElementById("too_short").style.display = "block";
     } else {
         document.getElementById("too_short").style.display = "none";
@@ -43,3 +43,22 @@ function validate_reg() {
     return true
 }
 
+function open_del() {
+    close_popup()
+    open_popup('del_conf')
+}
+
+function items_in_cart() {
+    msg = document.getElementById("things_in_cart");
+    if (msg) {
+        cart = JSON.parse(window.sessionStorage.getItem("cartItems"));
+        if (cart) {
+            if (Object.keys(cart).length > 1) {
+                msg.style.display = "block";
+            }
+        }
+    }
+
+}
+
+window.onload = items_in_cart()

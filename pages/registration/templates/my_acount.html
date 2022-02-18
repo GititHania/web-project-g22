@@ -4,6 +4,7 @@
 
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('registration.static', filename='css/registration.css') }}" />
+
 {% endblock %}
 
 {% block page_body_main_content %}
@@ -20,7 +21,7 @@
 {% endif %}
 {% endwith %}
 <div class="popup" id="edit_info_pu">
-    <h2>משתמש חדש </h2>
+    <h2>עדכון פרטים</h2>
     <form action="/edit_user" method="post" id="register-form" onsubmit="return validate_reg()">
         <table>
             <tr>
@@ -55,7 +56,7 @@
                         onkeyup="check_pass('PasswordN', 'PasswordNSec')" pattern="[A-Za-z0-9]{6, }"
                         oninvalid="this.setCustomValidity('הכנס סיסמא באורך של 6 ספרות או אותיות באנגלית לפחות בבקשה!')"
                         oninput="this.setCustomValidity('')" />
-                        <br> <span class="caption" id="too_short">הסיסמה קצרה מידי... </span>
+                    <br> <span class="caption" id="too_short">הסיסמה קצרה מידי... </span>
 
                 </td>
             </tr>
@@ -74,8 +75,23 @@
         <br />
         <button id="editUBtn" type="submit">ערוך פרטים</button>
     </form>
+    <button id="del_user" onclick="open_del()"><i class="fas fa-trash-alt"></i> מחק משתמש</button>
     <button id="closeUBtn" onclick="close_popup()"><i class="fa fa-times"></i></button>
 
+
+</div>
+<div class="popup" id="del_conf">
+    <form action="/delete" method="post">
+
+        <p>
+            {{session["full_name"]}} אתה בטוח כי אתה רוצה למחוק את המשתמש שלך?
+            <br> מחיקת המשתמש הינה סופית ולא ניתן לשחזר את המידע אחר כרוך
+            <br> כל הפרטים יעלמו, כולל הנקודות שצברת...
+            <br><button type="submit"> <i class="fas fa-frown"></i>כן אני בטוח</button>
+            <button type="button" onclick="close_popup('del_conf')"><i class="fas fa-times"></i> לא זאת טעות </button>
+    </form>
+
+    </p>
 </div>
 <div class="main">
     <h1 class="page_title">האזור האישי של {{session["full_name"]}} </h1>
@@ -87,15 +103,16 @@
         </h3>
         רוצה עוגיות? רוצה לעבור לתפריט? <br class="hiddenD">
         <button class="inline_btn" onclick="change_location('catalog')"> <i class="fas fa-cookie"></i></button>
-        
-        <br />יש לך דברים בעגלה... רוצה לעבור לקופה? <br class="hiddenD">
-        <button class="inline_btn" onclick="change_location('summery')"> <i class="fas fa-cash-register"></i></button>
-        <br />צברת בנתיים {} נקודות (שווה ל{} שקלים)<br />
+        <span id="things_in_cart">
+            <br />יש לך דברים בעגלה... רוצה לעבור לקופה? <br class="hiddenD">
+            <button class="inline_btn" onclick="change_location('summery')"> <i
+                    class="fas fa-cash-register"></i></button>
+        </span>
+        <br />צברת בנתיים {{points}} נקודות <br />
         <br />הפרטים האישים השתנו? אפשר לשנות אותם פה: <br class="hiddenD">
         <button class="inline_btn" onclick="open_popup('edit_info_pu')"><i class="fas fa-user-edit"></i></button>
 
         </p>
-
 
         <button onclick="change_location('/log_out')">התנתק</button>
     </div>

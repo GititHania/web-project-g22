@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, redirect, request, session, url_for
+import json
+from flask import Blueprint, flash, render_template, redirect, request, session, url_for
 from utilities.db.stores import Store
 
 # homepage blueprint definition
@@ -24,5 +25,14 @@ def set_meth():
                    'street': request.form.get("Street"),
                    'num': request.form.get("Num")}
         session["address"] = address
-    session["StoreID"] = request.form.get("storeID")
+    print(request.form)
+    if request.form.get("storeID"):
+        session["StoreID"] = request.form.get("storeID")
+    else:
+        storeID = Store.find_store(city)
+        if storeID < 0:
+            flash("no_store")
+            redirect('/')
+        else:
+            session["StoreID"] = storeID
     return redirect('catalog')

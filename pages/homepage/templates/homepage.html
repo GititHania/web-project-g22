@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
 <link rel="stylesheet" href="{{ url_for('homepage.static', filename='css/homepage.css') }}" />
 <script type="text/javascript">
-    var storeList = "{{ storeList }}";
+    var storeList = "{{ storeList|tojson }}";
+
 </script>
 {% endblock %}
 
@@ -58,7 +59,7 @@
                     <input name="City" id="City" type="text" readonly>
                 </td>
             </tr>
-            <input type="text" name="meth" id="meth_inp" hidden >
+            <input type="text" name="meth" id="meth_inp" hidden>
             <input type="text" name="storeID" id="storeID" hidden>
 
 
@@ -77,12 +78,13 @@
             <button type="button" onclick="set_method('Del')"> משלוח </button>
         </div>
     </form>
-
-    <div class="popup" id="choose_store_del">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="popup show" id="choose_store_del">
         <p>אין לנו סניף בעיר שלך...<br>
-             אנא בחר את הסניף הקרוב ביותר אליך<br> 
-            *משלוח מחוץ לעיר של הסניף כרוך  <br>
-             בתוספת של 10 ש"ח לדמי המשלוח
+            אנא בחר את הסניף הקרוב ביותר אליך<br>
+            *משלוח מחוץ לעיר של הסניף כרוך <br>
+            בתוספת של 10 ש"ח לדמי המשלוח
         </p>
         <select name="store" id="storeSelectD">
             {% for store in storeList %}
@@ -90,18 +92,19 @@
             {% endfor %}
         </select>
         <br>
-        <button onclick="set_store('storeSelectD')">בחר</button>
+        <button onclick="set_store('storeSelectD', false)">בחר</button>
     </div>
-
+    {% endif %}
+    {% endwith %}
     <div class="popup" id="choose_store_sp">
         <p>באיזה סניף יהיה לך היה נוח לבוא לבקר?</p>
         <select name="store" id="storeSelectS">
             {% for store in storeList %}
-            <option value="{{store.id}}">{{store.city}} {{store.street}}</option>
+            <option value="{{store.storeID}}">{{store.city}} {{store.street}}</option>
             {% endfor %}
         </select>
         <br>
-        <button onclick="set_store('storeSelectS')">בחר</button>
+        <button onclick="set_store('storeSelectS', true)">בחר</button>
     </div>
 
     <div id="msg">

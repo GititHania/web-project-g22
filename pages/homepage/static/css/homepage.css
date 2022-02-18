@@ -31,6 +31,10 @@ label {
     font-weight: 700;
 }
 
+#choose_store_del {
+    display: block;
+}
+
 @media only screen and (max-width: 1024px) {
     * {
         font-size: x-large;

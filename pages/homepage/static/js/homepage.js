@@ -21,30 +21,18 @@ function remove_spaces(str) {
     return (str.replace(/\s/g, ''))
 }
 
-function set_store(sel_id) {
+function set_store(sel_id, sub) {
     var storeID = document.getElementById(sel_id).value;
     sessionStorage.setItem("storeID", storeID);
     document.getElementById("storeID").value = storeID;
-    sessionStorage.setItem("storeID", storeID)
     close_popup("choose_store");
-}
-
-function find_store(city) {
-    var selected = "";
-    storeList.forEach(store => {
-        if (remove_spaces(store.city) == remove_spaces(city)) {
-            selected = storeID;
-        }
-    });
-    if (selected) {
-        document.getElementById("storeID").value = storeID;
-        sessionStorage.setItem("storeID", storeID)
-    } else {
-        open_popup("choose_store_del");
+    if (sub){
+        document.getElementById("address_form").submit();
     }
 }
 
 function set_method(meth) {
+    console.log(storesList)
     document.getElementById("meth_inp").value = meth;
     sessionStorage.setItem("method", meth)
     if (meth == "Del") {
@@ -55,8 +43,8 @@ function set_method(meth) {
         if (city_value && street_value && house_value) {
             address = { 'City': city_value, 'Street': street_value, 'House': house_value }
             address['storeID'] = find_store(address);
-            change_location('catalog');
             sessionStorage.setItem("address", JSON.stringify(address))
+            document.getElementById("address_form").submit();
         } else {
             alert("אנא מלא את פרטיך");
         }

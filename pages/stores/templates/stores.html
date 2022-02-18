@@ -10,12 +10,12 @@
 <div class="main">
     <h1 class="page_title">סניפים</h1>
     <div class="textBox">
-        {% for store in stores %}
-        <p id="s_city">סניף {{stores[store]['s_city']}}</p>
+        {% for store in storeList %}
+        <p id="s_city">סניף {{store.city}}</p>
         <p>
-            <span id="s_street">{{stores[store]['s_street']}} </span>
-            <span class="smaller-font" id="s_num">{{stores[store]['s_num']}}, </span>
-            <span class="smaller-font" id="s_phone">{{stores[store]['s_phone']}}</span>
+            <span id="s_street">{{store.street}} </span>
+            <span class="smaller-font" id="s_num">{{store.num}}, </span>
+            <span class="smaller-font" id="s_phone">{{store.phone}}</span>
         </p>
         {% endfor %}
     </div>
