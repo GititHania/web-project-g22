@@ -92,8 +92,5 @@ function save_add() {
 
 }
 
-function save_order(){
-    alert("קיבלנו את ההזמנה ובקרוב מאוד תוכל להתענג על עוגית טעימות וחמות!")
-}
 
 window.onload = print_summery()

@@ -48,6 +48,8 @@ def paying():
         User.update_points(user, calc_new_amount(cost))
         Order.save_order(city, street, num, user, cost)
         Card.save_card(card_num, ccv, ex_date, ID, is_valid, user)
+        session.pop("address")
+        session.pop("StoreID")
         return redirect('/')
 
 

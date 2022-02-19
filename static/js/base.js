@@ -113,3 +113,11 @@ function delete_cookie(key) {
 
 
 
+function save_order(){
+    sessionStorage.removeItem("final_cost");
+    sessionStorage.removeItem("total_cost");
+    sessionStorage.removeItem("cartItems");
+    sessionStorage.removeItem("storeID");
+    sessionStorage.removeItem("address");
+    alert("קיבלנו את ההזמנה ובקרוב מאוד תוכל להתענג על עוגית טעימות וחמות!")
+}

@@ -17,7 +17,7 @@ def index():
 def ma_index():
     if session.get("logged_in"):
         user = User.get_user(session["email"])[0]
-        return render_template('my_acount.html', points = user.Points)
+        return render_template('my_acount.html', points=user.Points)
     return redirect("/registration")
 
 
@@ -72,6 +72,8 @@ def log_out():
     session["email"] = ""
     session["full_name"] = ""
     session["logged_in"] = False
+    session.pop("address")
+    session.pop("StoreID")
     return redirect('/')
 
 
