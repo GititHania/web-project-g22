@@ -1,8 +1,10 @@
+import math
 from flask import Blueprint, flash, redirect, render_template, request, session
 from utilities.db.cards import Card
 from datetime import date
 
 from utilities.db.orders import Order
+from utilities.db.users import User
 
 # payment blueprint definition
 payment = Blueprint('payment', __name__, static_folder='static',
@@ -42,6 +44,8 @@ def paying():
         ID = form.get("IDP")
         card_num = form.get("CardP")
         ccv = form.get("ccvP")
+        old_amount = User.get_user_points(user)
+        User.update_points(user, calc_new_amount(cost))
         Order.save_order(city, street, num, user, cost)
         Card.save_card(card_num, ccv, ex_date, ID, is_valid, user)
         return redirect('/')
@@ -52,3 +56,7 @@ def get_date(year, month):
         month = "0"+month
     date = year+"-"+month+"-01"
     return date
+
+
+def calc_new_amount(cost):
+    return int(math.ceil(cost/10))

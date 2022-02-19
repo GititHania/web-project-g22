@@ -32,17 +32,14 @@ function set_store(sel_id, sub) {
 }
 
 function set_method(meth) {
-    console.log(storesList)
     document.getElementById("meth_inp").value = meth;
     sessionStorage.setItem("method", meth)
     if (meth == "Del") {
         var city_value = document.getElementById("City").value;
         var street_value = document.getElementById("street").value;
         var house_value = document.getElementById("houseNum").value;
-        find_store(city_value);
         if (city_value && street_value && house_value) {
             address = { 'City': city_value, 'Street': street_value, 'House': house_value }
-            address['storeID'] = find_store(address);
             sessionStorage.setItem("address", JSON.stringify(address))
             document.getElementById("address_form").submit();
         } else {

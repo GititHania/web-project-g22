@@ -9,24 +9,18 @@ suggestions = Blueprint('suggestions', __name__, static_folder='static',
 # Routes
 @suggestions.route('/suggestions')
 def index():
-    return render_template('suggestions.html')
-
-
-@suggestions.route('/voting')
-def index_vote():
     if session["logged_in"]:
         suggestions = Suggestion.get_suggestions()
-        return render_template('voteing.html', suggestions=suggestions)
-    # else:
-    #     return redirect('suggestions')
+        return render_template('suggestions.html', suggestions=suggestions)
+    else:
+        return render_template('suggestions.html')
 
 
 @suggestions.route('/new_sg', methods=["POST"])
 def new_sg():
     base = request.form.get("baseSg")
     top = request.form.get("toppingSg")
-    comments = request.form.get("textSg")
-    if Suggestion.post_suggestion(session["email"], base, top, comments) > 0:
+    if Suggestion.post_suggestion(session["email"], base, top) > 0:
         flash("תודה רבה על ההצעה,")
         flash("חודש הבא היא תופיע ברשימת ההצבעות")
     else:
@@ -36,5 +30,10 @@ def new_sg():
 
 @suggestions.route('/vote', methods=["POST"])
 def send_vote():
-    print(request.form.get("voting"))
+    sug_id = request.form.get("fav_sug")
+    cur_votes = Suggestion.get_votes(sug_id)[0]
+    Suggestion.update_votes(sug_id, int(cur_votes.votes)+1)
+    flash("תודה על ההצבעה!")
+    return redirect('suggestions')
+
 

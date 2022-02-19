@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request
+from flask import Blueprint, redirect, render_template, request, flash
 from utilities.db.messages import Message
 
 # contact blueprint definition

@@ -1,5 +1,6 @@
 
 from email.headerregistry import Address
+import math
 from flask import Blueprint, flash, redirect, render_template, request, session
 from utilities.db.users import User
 from utilities.db.stores import Store
@@ -11,6 +12,8 @@ summery = Blueprint('summery', __name__, static_folder='static',
                     static_url_path='/summery', template_folder='templates')
 
 # Routes
+
+
 @summery.route('/summery')
 def index():
     if (session.get("StoreID")):
@@ -42,7 +45,12 @@ def save():
         num = address.num
         user = session["email"]
         cost = request.form.get('tot_cost')
+        User.update_points(user, calc_new_amount(cost))
         Order.save_order(city, street, num, user, cost)
+
+
+def calc_new_amount(cost):
+    return int(math.ceil(cost/10))
 
 
 @summery.route('/save_address', methods=["post"])
