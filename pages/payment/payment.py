@@ -2,6 +2,8 @@ from flask import Blueprint, flash, redirect, render_template, request, session
 from utilities.db.cards import Card
 from datetime import date
 
+from utilities.db.orders import Order
+
 # payment blueprint definition
 payment = Blueprint('payment', __name__, static_folder='static',
                     static_url_path='/payment', template_folder='templates')
@@ -22,7 +24,6 @@ def index():
 @payment.route('/paying', methods=["post"])
 def paying():
     form = request.form
-    to_save = form.get("save_card")
     YearEx = form.get("YearEx")
     MonthEx = form.get("MonthEx")
     ex_date = get_date(YearEx, MonthEx)
@@ -32,15 +33,18 @@ def paying():
         flash("הכרטיהס לא בתוקף... אולי תנסה אחר?")
         redirect('payment')
     else:
-        to_save = form.get("save_card")
-
-        if to_save:
-            cus_name = form.get("NameP")
-            ID = form.get("IDP")
-            card_num = form.get("CardP")
-            ccv = form.get("ccvP")
-
-    return redirect('orderDetails')
+        address = session["address"]
+        city = address.city
+        street = address.street
+        num = address.num
+        user = session["email"]
+        cost = request.form.get('to_pay')
+        ID = form.get("IDP")
+        card_num = form.get("CardP")
+        ccv = form.get("ccvP")
+        Order.save_order(city, street, num, user, cost)
+        Card.save_card(card_num, ccv, ex_date, ID, is_valid, user)
+        return redirect('/')
 
 
 def get_date(year, month):

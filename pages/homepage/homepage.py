@@ -1,11 +1,9 @@
-import json
 from flask import Blueprint, flash, render_template, redirect, request, session, url_for
 from utilities.db.stores import Store
 
 # homepage blueprint definition
 homepage = Blueprint('homepage', __name__, static_folder='static',
                      static_url_path='/homepage', template_folder='templates')
-
 
 # Routes
 @homepage.route('/homepage')

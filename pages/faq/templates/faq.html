@@ -12,55 +12,20 @@
 <div class="main">
     <h1 class="page_title">שאלות נפוצות </h1>
     <div class="textBox">
+        {% for question in questions %}
         <div class="faq">
             <!-- faq question -->
-            <p class="faq-question"> כמה זמן משלוח?</p>
+            <p class="faq-question">{{question.question}}</p>
             <!-- faq answer -->
             <div class="faq-answer">
                 <p>
-                    האתר שלנו יודע לזהות את מיקומך המדויק ולהציע
-                    את הסניף הקרוב ביותר ולפיהם מחשב את זמן המשלוח המוערך עבורך.
+                    {{question.answer}}
                 </p>
             </div>
         </div>
         <hr class="hr-line">
-        <div class="faq">
-            <!-- faq question -->
-            <p class="faq-question"> מהי עלות המשלוח? </p>
-            <!-- faq answer -->
-            <div class="faq-answer">
-                <p>
-                    לפי מיקומך הנוכחי והסניף המוצע עבורך, האתר שלנו יודע לחשב את עלות המשלוח לפי המרחק שלך
-                    מהסניף הנבחר. (מינימום 10 שח דמי משלוח וחצי שקל לכל קילומטר שמעל 4 ק"מ מהסניף).
-                </p>
-            </div>
-        </div>
-        <hr class="hr-line">
-        <div class="faq">
-            <!-- faq question -->
-            <p class="faq-question"> איזה סוגי עוגיות ניתן להזמין? </p>
-            <!-- faq answer -->
-            <div class="faq-answer">
-                <p>
-                    לפי רצונך, תוכל לבחור עוגיות בודדות, לבחור מארז לפי גודל או "להכין" עוגייה בעצמך (בסיס
-                    ותוספת).
-                </p>
-            </div>
-        </div>
-        <hr class="hr-line">
-        <div class="faq">
-            <!-- faq question -->
-            <p class="faq-question"> האם קיימות עוגיות המתאימות לאלרגיים?</p>
-            <!-- faq answer -->
-            <div class="faq-answer">
-                <p>
-                    לצערנו לא :\ בהמשך נוציא קולקציה מיוחדת לאלרגיים לאגוזים.. מתנצלים 😊
-                </p>
-            </div>
-        </div>
-        <hr class="hr-line">
+        {% endfor %}
     </div>
-
 </div>
 {% endblock %}
 

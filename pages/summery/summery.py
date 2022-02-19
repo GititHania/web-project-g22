@@ -1,6 +1,9 @@
-from flask import Blueprint, flash, render_template, session
+
+from email.headerregistry import Address
+from flask import Blueprint, flash, redirect, render_template, request, session
 from utilities.db.users import User
 from utilities.db.stores import Store
+from utilities.db.orders import Order
 
 
 # summery blueprint definition
@@ -19,4 +22,36 @@ def index():
         else:
             return render_template('summery.html', store=storeInfo)
     else:
-        return render_template('summery.html')
+        stores = Store.get_stores()
+        return render_template('no_store.html', storesList=stores)
+
+
+@summery.route('/set_store', methods=["post"])
+def set_store():
+    print(request.form)
+    session["StoreID"] = request.form.get("store")
+    return redirect('summery')
+
+
+@summery.route('/save_order', methods=["post"])
+def save():
+    if (session["address"] and session["email"]):
+        address = session["address"]
+        city = address.city
+        street = address.street
+        num = address.num
+        user = session["email"]
+        cost = request.form.get('tot_cost')
+        Order.save_order(city, street, num, user, cost)
+
+
+@summery.route('/save_address', methods=["post"])
+def save_add():
+    city = request.form.get('city')
+    street = request.form.get('street')
+    num = request.form.get('num')
+    address = {'city': city,
+               'street': street,
+               'num': num}
+    session["address"] = address
+    return redirect('summery')

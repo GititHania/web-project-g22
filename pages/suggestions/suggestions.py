@@ -14,8 +14,9 @@ def index():
 
 @suggestions.route('/voting')
 def index_vote():
-    # if session["logged_in"]:
-    return render_template('voteing.html')
+    if session["logged_in"]:
+        suggestions = Suggestion.get_suggestions()
+        return render_template('voteing.html', suggestions=suggestions)
     # else:
     #     return redirect('suggestions')
 
@@ -32,3 +33,8 @@ def new_sg():
         flash("הייתה בעיה בשמירת ההצבעה, נסו שוב")
     
     return redirect('suggestions')
+
+@suggestions.route('/vote', methods=["POST"])
+def send_vote():
+    print(request.form.get("voting"))
+

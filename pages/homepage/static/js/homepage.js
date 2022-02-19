@@ -53,7 +53,6 @@ function set_method(meth) {
     }
 }
 
-
 function read_response(res) {
     var loc = res.results[0].formatted;
     console.log(loc);

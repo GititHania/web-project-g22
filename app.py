@@ -38,10 +38,6 @@ app.register_blueprint(catalog)
 from pages.faq.faq import faq
 app.register_blueprint(faq)
 
-## orderDetails
-from pages.orderDetails.orderDetails import orderDetails
-app.register_blueprint(orderDetails)
-
 ## contact
 from pages.contact.contact import contact
 app.register_blueprint(contact)

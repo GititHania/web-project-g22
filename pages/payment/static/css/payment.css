@@ -1,3 +1,10 @@
 .small_inp {
     font-size: smaller;
 }
+
+#to_pay {
+    background-color: var(--Back-color);
+    width           : min-content;
+    font-size       : large;
+    font-weight     : 700;
+}

@@ -5,8 +5,10 @@
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('summery.static', filename='css/summery.css') }}" />
 <script type="text/javascript">
+
     var points = "{{points}}";
-    var store_del_cost = "{{store.del_cost}}"  
+    var store_del_cost = "{{store.del_cost}}"
+
 </script>
 {% endblock %}
 
@@ -33,56 +35,87 @@
     <button onclick="close_popup()">פעם הבאה</button>
 </div>
 {% endif %}
+<div class="popup" id="no_address">
+    <h3> ביקשת משלוח אבל לא אמרת לאן</h3>
+    <p>
+    <form action="/save_address" method="post">
+        <label for="city"> עיר</label><br>
+        <input type="text" name="city" required id="city"><br>
+        <label for="street"> רחוב</label><br>
+        <input type="text" name="street" required id="street"><br>
+        <label for="num"> מספר</label><br>
+        <input type="number" name="num" required id="num"><br>
+        <button onclick="save_add()" type="submit"><i class="fas fa-save"></i></button>
+    </form>
+    </p>
+</div>
 <div class="main">
     <h1 class="page_title">סיכום הזמנה </h1>
+    <div class="textBox" id="txt_no_items">
+        העגלה שלך ריקה...<br> עבור לתפריט כדי להוסיף עוגיות
+        <br>
+        <button onclick="change_location('catalog')">
+            לתפריט
+        </button>
+    </div>
     {% if store %}
     <div class="textBox">
         <br>
-        <div>
-            <div id="as_sp">
-                בחרת לאסוף את המוצרים בעצמך, <br>
-                איזה כיף שנוכל לראות אותך! <br>
-                הכל אמור להיות מוכן בעוד כ20 דקות <br>
+        <form action="/save_order" method="post">
+            <div>
+                <div id="as_sp">
+                    בחרת לאסוף את המוצרים בעצמך, <br>
+                    איזה כיף שנוכל לראות אותך! <br>
+                    הכל אמור להיות מוכן בעוד כ20 דקות <br>
+                </div>
+                <label class="underline">הסניף שנבחר הוא:</label>
+                <p>
+                    <span id="s_city">{{store.city}}</span>
+                    <span id="s_street"> {{store.street}}</span>
+                    <span id="s_num"> {{store.num}}</span>
+                    <br>
+                    <span id="s_phone">{{store.phone}}</span>
+                </p>
             </div>
-            <label class="underline">הסניף שנבחר הוא:</label>
-            <p>
-                <span id="s_city">{{store.city}}</span>
-                <span id="s_street"> {{store.street}}</span>
-                <span id="s_num"> {{store.num}}</span>
-                <br>
-                <span id="s_phone">{{store.phone}}</span>
-            </p>
-        </div>
+            <div>
+                <p>המוצרים הנבחרים</p>
+                <ol id="items">
 
-        {% if session["logged_in"] %}
-        <div id="dis_div">
-            <span class="underline"> נקודות: </span>
-            <span id="points">{{points}}</span>
-        </div>
-        {% endif %}
-        <div id="as_del">
-            <p>בחרת שנגיע עד אליך במשלוח
-                <br>
-                <span class="underline">הכתובת:</span>
-                <br>
-                <span id="ad_city"></span>
-                <span> ,</span>
-                <span id="ad_street"></span>
-                <span> </span>
-                <span id="ad_num"></span>
-            <label class="underline">עלות המשלוח למיקומך:</label>
-            <span id="del_cost"> {{store.del_cost}} </span>
-        </p>
+                </ol>
+            </div>
 
-        </div>
-        <div>
-            <label class="underline">עלות כוללת:</label>
-            <p id="tot_cost"></p>
-        </div>
-        <button id="creditBtn" onclick="change_location('payment')">תשלום באשראי</button> <br class="hiddenD">
-        <button id="chashBtn" onclick="change_location('orderDetails')">תשלום במזומן</button> <br class="hiddenD">
+            {% if session["logged_in"] %}
+            <div id="dis_div">
+                <span class="underline"> נקודות: </span>
+                <span id="points">{{points}}</span>
+            </div>
+            {% endif %}
+            <div id="as_del">
+                <p>בחרת שנגיע עד אליך במשלוח
+                    <br>
+                    <span class="underline">הכתובת:</span>
+                    <br>
+                    <span id="ad_city"></span>
+                    <span> ,</span>
+                    <span id="ad_street"></span>
+                    <span> </span>
+                    <span id="ad_num"></span>
+                    <br>
+                    <label class="underline">עלות המשלוח למיקומך:</label><br>
+                    <span id="del_cost"> {{store.del_cost}} </span>
+                </p>
+
+            </div>
+            <div>
+                <label class="underline">עלות כוללת:</label>
+                <br>
+                <input name="tot_cost" id="tot_cost" readonly></input>
+            </div>
+            <button id="creditBtn" type="button" onclick="change_location('payment')">תשלום באשראי</button> <br class="hiddenD">
+            <button id="chashBtn" type="submit" onclick="save_order()">תשלום במזומן</button> <br class="hiddenD">
+        </form>
         {% if not session["logged_in"] %}
-        <button onclick="change_location('/registration')">התחבר</button>
+        <button onclick="change_location('registration')">התחבר</button>
         {% endif %}
     </div>
     {% endif %}

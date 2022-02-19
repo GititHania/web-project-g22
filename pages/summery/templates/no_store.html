@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% set page_head_title = 'About' %}
+
+{% block page_head_css %}
+<link rel="stylesheet" href="{{ url_for('summery.static', filename='css/summery.css') }}" />
+{% endblock %}
+
+{% block page_body_main_content %}
+<div class="main">
+    <h1>סיכום הזמנה</h1>
+    <div class="textBox">
+        לא בחרת חנות...
+        <br>
+        אנא בחר
+        <br>
+        <form action="\set_store" method="post" id="add_form">
+            <select name="store" id="storeSelect">
+                {% for store in storesList %}
+                <option value="{{store.storeID}}">{{store.city}} {{store.street}}</option>
+                {% endfor %}
+            </select>
+            <button onclick="store_set()">בחר</button>
+        </form>
+
+        <br>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_body_footer %}{% endblock %}
+
+{% block page_body_js %}
+<script src="{{ url_for('summery.static', filename='js/summery.js') }}"></script>
+{% endblock %}

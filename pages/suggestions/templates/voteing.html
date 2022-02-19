@@ -10,7 +10,30 @@
 
 <div class="main">
     <h1 class="page_title">הצבעה להצעות </h1>
-    
+    <div class="textBox">
+        {% if suggestions %}
+        אנא בחר את העוגיה שנשמעת הכי טעימה:) <br>
+        <form action="/vote" method="post">
+            <select name="voting" id="voting">
+                {% for sug in suggestions %}
+                <label for="{{sug.id}}">
+                    <span>בסיס: {{sug.base}}</span>
+                    <span> תוספת: {{sug.tooping}}</span>
+                </label>
+                <input type="radio" name="fav_sug" id="{{sug.id}}">
+                {% endfor %}
+            </select>
+            <button type="submit">שלח</button>
+        </form>
+
+        {% else %}
+
+        <p>
+            נראה שלא היו הצעות חודש שעבר... <br>
+        </p>
+
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
 
@@ -19,4 +42,3 @@
 {% block page_body_js %}
 <script src="{{ url_for('suggestions.static', filename='js/vote.js') }}"></script>
 {% endblock %}
-

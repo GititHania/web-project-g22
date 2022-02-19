@@ -13,10 +13,6 @@ function open_popup(popup_id) {
     document.getElementById("pm-popups").style.display = "block";
 }
 
-function find_store(address) {
-
-}
-
 function change_location(new_loc) {
     window.location.href = new_loc;
 }
@@ -26,7 +22,6 @@ function close_alert_popup() {
     document.getElementById("alert-popups").style.display = "none";
     document.getElementById("alert").style.display = "none";
 }
-
 
 function set_cart() {
     cart = JSON.parse(window.sessionStorage.getItem("cartItems"));

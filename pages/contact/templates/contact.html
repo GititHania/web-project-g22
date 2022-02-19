@@ -12,7 +12,7 @@
     <i class="fab fa-whatsapp fa-2x whatsapp_widgit" onclick="send_to_whatsapp()"></i>
     <div class="wu_speach_bubble right shownD" onclick="send_to_whatsapp()">דברו איתנו<br>בwhatsapp </div>
     <div class="textBox">
-        <form id='Contact_form' action="">
+        <form id='Contact_form' action="/send" method="post">
             <table>
                 <tr>
                     <td class="shownD">
@@ -52,11 +52,11 @@
                 </tr>
                 <tr>
                     <td class="shownD">
-                        <label for="Input"> טקסט חופשי </label><br />
+                        <label for="Msg"> טקסט חופשי </label><br />
                     </td>
                     <td>
-                        <label for="Input" class="hiddenD"> טקסט חופשי </label><br />
-                        <textarea name="Input" id="Input" rows="10"
+                        <label for="Msg" class="hiddenD"> טקסט חופשי </label><br />
+                        <textarea name="Msg" id="Msg" rows="10"
                             placeholder="זה המקום לשתף, אנחנו מקשיבים..."></textarea><br />
 
                     </td>

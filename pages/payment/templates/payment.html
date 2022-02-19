@@ -4,9 +4,7 @@
 
 {% block page_head_css %}
 <link rel="stylesheet" href="{{ url_for('payment.static', filename='css/payment.css') }}" />
-<script type="text/javascript">
-    var card = '{{card}}'
-</script>
+
 {% endblock %}
 
 {% block page_body_main_content %}
@@ -14,6 +12,8 @@
     <h1 class="page_title">תשלום </h1>
     <div class="textBox">
         <form id="payment_form" action="/paying" method="post">
+            <label for="">סכום לתשלום</label> 
+            <input name="to_pay" id="to_pay" size="2" readonly></input>
             <table>
                 <tr>
                     <td>
@@ -71,13 +71,7 @@
                 </tr>
                
             </table>
-            {% if session["logged_in"] %}
-            <tr>
-                <input type="checkbox" name="save_card" id="save_card">
-                <label class="small_inp" for="save_card">תרצה שנשמור את פרטי האשראי שלך לפעם הבאה?</label>
-            </tr> <br>
-            {% endif %}
-            <button type="submit" id="subbtn">שלם</button>
+            <button type="submit" id="subbtn" onclick="save_order()">שלם</button>
         </form>
 
     </div>
